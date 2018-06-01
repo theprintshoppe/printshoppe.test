@@ -1,0 +1,23 @@
+/******************************************************************
+Theme Name: The Print Shoppe
+Theme URI: https://www.theprintshoppe.net;
+Description: Just another custom theme by Rishi.
+Author: Rishi Patel
+Author URI: https://www.therishipatel.com
+Version: 2.0
+Tags: 
+
+******************************************************************/
+
+/*
+WordPress Probz
+So Theme Check (http://wordpress.org/plugins/theme-check/)
+is constantly telling me that it needs these classes in the CSS even
+though they are in the REAL stylesheet in library/css/style.css.
+So we're gonna drop these here to keep it happy.
+Great work, Theme Check (eye roll)
+*/
+
+.sticky {}          /* DO NOT EDIT THIS */
+.gallery-caption {} /* THESE ARE USELESS */
+.bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */

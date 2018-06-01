@@ -1,0 +1,79 @@
+// Breakpoints
+$medium-screen: 600px;
+$large-screen: 900px;
+
+// Typography
+$sans-serif: "rosario";
+$serif: "clarendon-text-pro";
+$special: "kinescope";
+
+$base-font-family: $sans-serif;
+$heading-font-family: $serif;
+
+// Font Sizes
+$base-font-size: 1em;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$base-border-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+
+// Colors
+$white: #fff;
+$black: #000;
+
+$primary: #003241;
+$primary-shade: #00232e;
+$primary-tint: #4c6f7a;
+$primary-pastel: #ccd6d9;
+
+$secondary: #01b3c0;
+$secondary-shade: #017e87;
+$secondary-tint: #4dcad3;
+$secondary-pastel: #ccf0f2;
+
+$accent: #efbe14;
+$accent-shade: #a8850e;
+$accent-tint: #f4d15a;
+$accent-pastel: #fcf2d0;
+
+$base: #dbe0e3;
+$base-shade: #9a9d9f;
+$base-tint: #e6e9eb;
+$base-pastel: #f8f9f9;
+
+$blue: #1565c0;
+$dark-gray: #333;
+$medium-gray: #999;
+$light-gray: #ddd;
+
+$alert-yellow:      #ebe16f;
+$alert-red:         #fbe3e4;
+$alert-green:       #e6efc2;
+$alert-blue:        #d5edf8;
+
+// Font Colors
+$base-font-color: $dark-gray;
+$text-color: $base-shade;
+$action-color: $accent;
+
+// Border
+$base-border-color: $light-gray;
+$base-border: 1px solid $base-border-color;
+
+// Background Colors
+$base-background-color: $base-tint;
+$secondary-background-color: tint($base-border-color, 75%);
+
+// Forms
+$form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+// Animations
+$base-duration: 150ms;
+$base-timing: ease;
