@@ -14,7 +14,7 @@ if ( post_password_required() ) {
 
   <?php if ( have_comments() ) : ?>
 
-    <h3 id="comments-title" class="h2"><?php comments_number( __( '<span>No</span> Comments', 'tpstheme' ), __( '<span>One</span> Comment', 'tpstheme' ), __( '<span>%</span> Comments', 'tpstheme' ) );?></h3>
+    <h3 id="comments-title" class="h2"><?php comments_number( __( '<span>No</span> Comments', 'pstheme' ), __( '<span>One</span> Comment', 'pstheme' ), __( '<span>%</span> Comments', 'pstheme' ) );?></h3>
 
     <section class="commentlist">
       <?php
@@ -22,9 +22,9 @@ if ( post_password_required() ) {
           'style'             => 'div',
           'short_ping'        => true,
           'avatar_size'       => 40,
-          'callback'          => 'tps_comments',
+          'callback'          => 'ps_comments',
           'type'              => 'all',
-          'reply_text'        => __('Reply', 'tpstheme'),
+          'reply_text'        => __('Reply', 'pstheme'),
           'page'              => '',
           'per_page'          => '',
           'reverse_top_level' => null,
@@ -35,13 +35,13 @@ if ( post_password_required() ) {
 
     <?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
     	<nav class="navigation comment-navigation" role="navigation">
-      	<div class="comment-nav-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'tpstheme' ) ); ?></div>
-      	<div class="comment-nav-next"><?php next_comments_link( __( 'More Comments &rarr;', 'tpstheme' ) ); ?></div>
+      	<div class="comment-nav-prev"><?php previous_comments_link( __( '&larr; Previous Comments', 'pstheme' ) ); ?></div>
+      	<div class="comment-nav-next"><?php next_comments_link( __( 'More Comments &rarr;', 'pstheme' ) ); ?></div>
     	</nav>
     <?php endif; ?>
 
     <?php if ( ! comments_open() ) : ?>
-    	<p class="no-comments"><?php _e( 'Comments are closed.' , 'tpstheme' ); ?></p>
+    	<p class="no-comments"><?php _e( 'Comments are closed.' , 'pstheme' ); ?></p>
     <?php endif; ?>
 
   <?php endif; ?>

@@ -1,7 +1,7 @@
 <?php
 /*
-Author: Eddie Machado
-URL: http://themble.com/bones/
+Author: Rishi Patel
+URL: http://www.therishipatel.com/
 
 This is where you can drop your custom functions or
 just edit things like thumbnail sizes, header images,
@@ -9,7 +9,7 @@ sidebars, comments, etc.
 */
 
 // LOAD BONES CORE (if you remove this, the theme will break)
-require_once( 'library/tps.php' );
+require_once( 'library/ps.php' );
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
@@ -19,62 +19,63 @@ LAUNCH BONES
 Let's get everything up and running.
 *********************/
 
-function tps_ahoy() {
+function ps_howdy() {
 
   //Allow editor style.
   add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
 
   // let's get language support going, if you need it
-  load_theme_textdomain( 'tpstheme', get_template_directory() . '/library/translation' );
+  load_theme_textdomain( 'pstheme', get_template_directory() . '/library/translation' );
 
   // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-  require_once( 'library/custom-post-type.php' );
+  require_once( 'library/post-types/pt-team-members.php' );
+  require_once( 'library/post-types/pt-resources.php' );
 
   // launching operation cleanup
-  add_action( 'init', 'tps_head_cleanup' );
+  add_action( 'init', 'ps_head_cleanup' );
   // A better title
   add_filter( 'wp_title', 'rw_title', 10, 3 );
   // remove WP version from RSS
-  add_filter( 'the_generator', 'tps_rss_version' );
+  add_filter( 'the_generator', 'ps_rss_version' );
   // remove pesky injected css for recent comments widget
-  add_filter( 'wp_head', 'tps_remove_wp_widget_recent_comments_style', 1 );
+  add_filter( 'wp_head', 'ps_remove_wp_widget_recent_comments_style', 1 );
   // clean up comment styles in the head
-  add_action( 'wp_head', 'tps_remove_recent_comments_style', 1 );
+  add_action( 'wp_head', 'ps_remove_recent_comments_style', 1 );
   // clean up gallery output in wp
-  add_filter( 'gallery_style', 'tps_gallery_style' );
+  add_filter( 'gallery_style', 'ps_gallery_style' );
 
   // enqueue base scripts and styles
-  add_action( 'wp_enqueue_scripts', 'tps_scripts_and_styles', 999 );
+  add_action( 'wp_enqueue_scripts', 'ps_scripts_and_styles', 999 );
   // ie conditional wrapper
 
   // launching this stuff after theme setup
-  tps_theme_support();
+  ps_theme_support();
 
   // adding sidebars to Wordpress (these are created in functions.php)
-  add_action( 'widgets_init', 'tps_register_sidebars' );
+  add_action( 'widgets_init', 'ps_register_sidebars' );
 
   // cleaning up random code around images
-  add_filter( 'the_content', 'tps_filter_ptags_on_images' );
+  add_filter( 'the_content', 'ps_filter_ptags_on_images' );
   // cleaning up excerpt
-  add_filter( 'excerpt_more', 'tps_excerpt_more' );
+  add_filter( 'excerpt_more', 'ps_excerpt_more' );
 
 } /* end bones ahoy */
 
 // let's get this party started
-add_action( 'after_setup_theme', 'tps_ahoy' );
+add_action( 'after_setup_theme', 'ps_howdy' );
 
 
 /************* OEMBED SIZE OPTIONS *************/
 
 if ( ! isset( $content_width ) ) {
-	$content_width = 680;
+	$content_width = 960;
 }
 
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-add_image_size( 'tps-thumb-600', 600, 150, true );
-add_image_size( 'tps-thumb-300', 300, 100, true );
+add_image_size( 'ps-thumb-600', 600, 150, true );
+add_image_size( 'ps-thumb-300', 300, 100, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -88,20 +89,20 @@ inside the thumbnail function.
 
 For example, to call the 300 x 100 sized image,
 we would use the function:
-<?php the_post_thumbnail( 'tps-thumb-300' ); ?>
+<?php the_post_thumbnail( 'ps-thumb-300' ); ?>
 for the 600 x 150 image:
-<?php the_post_thumbnail( 'tps-thumb-600' ); ?>
+<?php the_post_thumbnail( 'ps-thumb-600' ); ?>
 
 You can change the names and dimensions to whatever
 you like. Enjoy!
 */
 
-add_filter( 'image_size_names_choose', 'tps_custom_image_sizes' );
+add_filter( 'image_size_names_choose', 'ps_custom_image_sizes' );
 
-function tps_custom_image_sizes( $sizes ) {
+function ps_custom_image_sizes( $sizes ) {
     return array_merge( $sizes, array(
-        'tps-thumb-600' => __('600px by 150px'),
-        'tps-thumb-300' => __('300px by 100px'),
+        'ps-thumb-600' => __('600px by 150px'),
+        'ps-thumb-300' => __('300px by 100px'),
     ) );
 }
 
@@ -129,7 +130,7 @@ new image size.
   - Create some boilerplate Sections, Controls and Settings
 */
 
-function tps_theme_customizer($wp_customize) {
+function ps_theme_customizer($wp_customize) {
   // $wp_customize calls go here.
   //
   // Uncomment the below lines to remove the default customize sections 
@@ -148,16 +149,16 @@ function tps_theme_customizer($wp_customize) {
   // $wp_customize->get_section('background_image')->title = __( 'Images' );
 }
 
-add_action( 'customize_register', 'tps_theme_customizer' );
+add_action( 'customize_register', 'ps_theme_customizer' );
 
 /************* ACTIVE SIDEBARS ********************/
 
 // Sidebars & Widgetizes Areas
-function tps_register_sidebars() {
+function ps_register_sidebars() {
 	register_sidebar(array(
 		'id' => 'sidebar1',
-		'name' => __( 'Sidebar 1', 'tpstheme' ),
-		'description' => __( 'The first (primary) sidebar.', 'tpstheme' ),
+		'name' => __( 'Sidebar 1', 'pstheme' ),
+		'description' => __( 'The first (primary) sidebar.', 'pstheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -174,8 +175,8 @@ function tps_register_sidebars() {
 
 	register_sidebar(array(
 		'id' => 'sidebar2',
-		'name' => __( 'Sidebar 2', 'tpstheme' ),
-		'description' => __( 'The second (secondary) sidebar.', 'tpstheme' ),
+		'name' => __( 'Sidebar 2', 'pstheme' ),
+		'description' => __( 'The second (secondary) sidebar.', 'pstheme' ),
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h4 class="widgettitle">',
@@ -194,7 +195,7 @@ function tps_register_sidebars() {
 /************* COMMENT LAYOUT *********************/
 
 // Comment Layout
-function tps_comments( $comment, $args, $depth ) {
+function ps_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
   <div id="comment-<?php comment_ID(); ?>" <?php comment_class('cf'); ?>>
     <article  class="cf">
@@ -212,13 +213,13 @@ function tps_comments( $comment, $args, $depth ) {
         ?>
         <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
         <?php // end custom gravatar call ?>
-        <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'tpstheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'tpstheme' ),'  ','') ) ?>
-        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'tpstheme' )); ?> </a></time>
+        <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'pstheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'pstheme' ),'  ','') ) ?>
+        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'pstheme' )); ?> </a></time>
 
       </header>
       <?php if ($comment->comment_approved == '0') : ?>
         <div class="alert alert-info">
-          <p><?php _e( 'Your comment is awaiting moderation.', 'tpstheme' ) ?></p>
+          <p><?php _e( 'Your comment is awaiting moderation.', 'pstheme' ) ?></p>
         </div>
       <?php endif; ?>
       <section class="comment_content cf">
@@ -238,10 +239,10 @@ external fonts. If you're using Google Fonts, you
 can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
-function tps_fonts() {
-  wp_enqueue_style('googleFonts', 'http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+function ps_fonts() {
+  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Comfortaa:400,700|Merriweather:700,900,700italic,900italic');
 }
 
-add_action('wp_enqueue_scripts', 'tps_fonts');
+add_action('wp_enqueue_scripts', 'ps_fonts');
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

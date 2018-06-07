@@ -21,7 +21,7 @@ David Dellanave for speed & code optimization
 and several other developers. :)
 
 #### Submit Bugs & or Fixes:
-https://github.com/eddiemachado/bones/issues
+htps://github.com/eddiemachado/bones/issues
 
 To view Release & Update Notes, read the CHANGELOG.md file in the main folder.
 
@@ -32,6 +32,6 @@ doing with my life, follow me on twitter: @eddiemachado
 
 Yeoman generator to quickly install Bones Wordpress starter theme into your Wordpress theme folder
 by 0dp
-https://github.com/0dp/generator-wp-bones
+htps://github.com/0dp/generator-wp-bones
 
 

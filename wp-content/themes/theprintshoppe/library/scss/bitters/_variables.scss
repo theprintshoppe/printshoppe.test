@@ -3,9 +3,9 @@ $medium-screen: 600px;
 $large-screen: 900px;
 
 // Typography
-$sans-serif: "rosario";
-$serif: "clarendon-text-pro";
-$special: "kinescope";
+$sans-serif: "Gotham", sans-serif;
+$serif: "Merriweather", serif;
+$special: "Comfortaa", sans-serif;
 
 $base-font-family: $sans-serif;
 $heading-font-family: $serif;
@@ -18,7 +18,7 @@ $base-line-height: 1.5;
 $heading-line-height: 1.2;
 
 // Other Sizes
-$base-border-radius: 3px;
+$base-border-radius: 4px;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
@@ -27,22 +27,22 @@ $base-z-index: 0;
 $white: #fff;
 $black: #000;
 
-$primary: #003241;
-$primary-shade: #00232e;
-$primary-tint: #4c6f7a;
-$primary-pastel: #ccd6d9;
+$primary: #4e58a7;
+$primary-shade: #484a9a;
+$primary-tint: #5862aa;
+$primary-pastel: #6b80aa;
 
-$secondary: #01b3c0;
+$secondary: #f58220;
 $secondary-shade: #017e87;
 $secondary-tint: #4dcad3;
 $secondary-pastel: #ccf0f2;
 
-$accent: #efbe14;
-$accent-shade: #a8850e;
-$accent-tint: #f4d15a;
-$accent-pastel: #fcf2d0;
+$accent: #a3dad6;
+$accent-shade: #678987;
+$accent-tint: #B3D6D4;
+$accent-pastel: #D4E7E6;
 
-$base: #dbe0e3;
+$base: #a3dad6;
 $base-shade: #9a9d9f;
 $base-tint: #e6e9eb;
 $base-pastel: #f8f9f9;

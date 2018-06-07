@@ -19,11 +19,11 @@
 
 									<h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
 									<p class="byline entry-meta vcard">
-										<?php printf( __( 'Posted', 'tpstheme' ).' %1$s %2$s',
+										<?php printf( __( 'Posted', 'pstheme' ).' %1$s %2$s',
                   							     /* the time the post was published */
                   							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
                        								/* the author of the post */
-                       								'<span class="by">'.__('by', 'tpstheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
+                       								'<span class="by">'.__('by', 'pstheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
                     							); ?>
 									</p>
 
@@ -31,7 +31,7 @@
 
 								<section class="entry-content">
 
-									<?php the_post_thumbnail( 'tps-thumb-300' ); ?>
+									<?php the_post_thumbnail( 'ps-thumb-300' ); ?>
 
 									<?php the_excerpt(); ?>
 
@@ -45,19 +45,19 @@
 
 							<?php endwhile; ?>
 
-									<?php tps_page_navi(); ?>
+									<?php ps_page_navi(); ?>
 
 							<?php else : ?>
 
 									<article id="post-not-found" class="hentry">
 										<header class="article-header">
-											<h1><?php _e( 'Oops, Post Not Found!', 'tpstheme' ); ?></h1>
+											<h1><?php _e( 'Oops, Post Not Found!', 'pstheme' ); ?></h1>
 										</header>
 										<section class="entry-content">
-											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'tpstheme' ); ?></p>
+											<p><?php _e( 'Uh Oh. Something is missing. Try double checking things.', 'pstheme' ); ?></p>
 										</section>
 										<footer class="article-footer">
-												<p><?php _e( 'This is the error message in the archive.php template.', 'tpstheme' ); ?></p>
+												<p><?php _e( 'This is the error message in the archive.php template.', 'pstheme' ); ?></p>
 										</footer>
 									</article>
 
