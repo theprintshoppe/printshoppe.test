@@ -20,11 +20,11 @@ h6 {
 
 h1 {
   font-family: $serif;
-  font-size: 1.9em;
-  font-weight: 700;
+  font-size: 2em;
+  font-weight: 900;
   padding-bottom: .45em;
   margin: .9em 0 .45em;
-  color: $primary;
+  color: $secondary;
   position: relative;
   
   &:after {
@@ -47,13 +47,14 @@ h1 {
 }
 
 h2 {
-  font-family: $serif;
-  font-size: 1.3em;
+  font-family: $special;
+  font-size: 1.4em;
   color: $secondary;
   font-weight: 900;
+  text-transform: uppercase;
   
   @include media($medium-screen) {
-    font-size: 1.5em;
+    font-size: 1.6em;
   }
 }
 
@@ -72,13 +73,13 @@ h2 code {
 }
 
 h3 {
-  font-family: $serif;
-  font-size: 1.4em;
+  font-family: $special;
+  font-size: 1.2em;
   color: $primary-tint;
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 900;
   line-height: 1.3em;
   margin-bottom: 0.4em;
+  text-transform: uppercase;
 }
 
 h4 {
@@ -124,14 +125,27 @@ p {
 }
 
 a {
-  color: $action-color;
+  color: $secondary;
   text-decoration: none;
   transition: color $base-duration $base-timing;
 
   &:active,
   &:focus,
   &:hover {
-    color: shade($action-color, 25%);
+    color: shade($secondary, 25%);
+  }
+
+  &[target="_blank"]:after {
+    font-family: $icon;
+    content: "\f35d";
+    margin-left: 0.5em;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
+    font-size: 0.75em;
   }
 }
 

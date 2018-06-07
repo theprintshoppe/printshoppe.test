@@ -7,3 +7,29 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+.row {
+	@include row();
+}
+
+.first {
+	@include omega();
+}
+
+.one-half {
+	@include span-columns(6);
+}
+
+.one-third {
+	@include span-columns(4);
+}
+
+.one-fourth {
+	@include span-columns(3);
+}

@@ -1,8 +1,11 @@
-#{$all-buttons} {
+.button,
+button,
+input[type="button"],
+input[type="submit"], {
   appearance: none;
-  background-color: $action-color;
-  border: 0;
-  border-radius: $base-border-radius;
+  background-color: $secondary;
+  border: 2px solid transparent;
+  border-radius: 2em;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -10,17 +13,17 @@
   font-size: $base-font-size;
   -webkit-font-smoothing: antialiased;
   font-weight: 600;
-  line-height: 1;
-  padding: $small-spacing $base-spacing;
+  line-height: 1em;
+  padding: 1em 2em;
   text-decoration: none;
-  transition: background-color $base-duration $base-timing;
+  transition: all 0.5s;
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
 
   &:hover,
   &:focus {
-    background-color: shade($action-color, 20%);
+    background-color: shade($secondary, 20%);
     color: #fff;
   }
 
@@ -32,4 +35,89 @@
       background-color: $action-color;
     }
   }
+}
+
+.button-alt {
+  background-color: $base;
+  color: $primary;
+
+  &:hover,
+  &:focus {
+    background-color: shade($base, 20%);
+    color: #fff;
+  }
+}
+
+.button-ghost {
+  background-color: transparent;
+  border: 2px solid $secondary;
+  color: $secondary;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    border: 2px solid $base;
+    color: $base;
+  }
+}
+
+.button-cta {
+
+  &:after {
+    font-family: $icon;
+    content: '\f061';
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
+    font-size: 0.75em;
+    margin-left: -1em;
+    opacity: 0;
+    transition: all 0.5s;
+  }
+
+  &:hover {
+
+    &:after {
+      display: inline-block;
+      opacity: 1;
+      margin-left: 1em;
+    }
+  }
+
+  &.button-alt {
+
+    &:after {
+      color: $primary;
+    }
+
+    &:hover {
+
+      &:after {
+        color: #fff;
+      }
+    }
+  }
+
+  &.button-ghost {
+
+    &:after {
+      color: $secondary;
+    }
+
+    &:hover {
+
+      &:after {
+        color: $base;
+      }
+    }
+  }
+}
+
+.button-small {
+  font-size: 0.75em;
+  padding: 0.75em 1em;
+  border-radius: 1.5em;
 }

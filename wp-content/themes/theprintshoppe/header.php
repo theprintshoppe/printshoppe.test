@@ -24,6 +24,7 @@
         <meta name="theme-color" content="#484a9a">
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 		<?php // wordpress head functions ?>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
 	</head>
