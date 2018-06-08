@@ -240,7 +240,7 @@ can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
 function ps_fonts() {
-  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Comfortaa:400,700|Merriweather:700,700i,900');
+  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Comfortaa:700|Merriweather:400,400i,700|Montserrat:500,500i,700,700i');
 }
 
 add_action('wp_enqueue_scripts', 'ps_fonts');

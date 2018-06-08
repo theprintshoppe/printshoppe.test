@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  background: #fff;
 }
 
 *,
@@ -8,10 +9,29 @@ html {
   box-sizing: inherit;
 }
 
+html, body {
+	height: 100%;
+}
+
 body {
 	display: flex;
-	min-height: 100vh;
 	flex-direction: column;
+	margin: 0 2em;
+	padding: 2em 0 0;
+
+	&:before {
+		content: "";
+		position: fixed;
+		background: #fff;
+		left: 0;
+		right: 0;
+		height: 2em;
+		top: 0;
+	}
+}
+
+#container {
+	flex: 1 0 auto;
 }
 
 .row {
