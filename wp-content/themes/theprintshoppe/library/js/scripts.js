@@ -110,6 +110,22 @@ function loadGravatars() {
 */
 jQuery(document).ready(function($) {
 
+  $(window).bind('scroll', function() {
+    var $el = $('.main-nav-wrapper');  //record the elem so you don't crawl the DOM everytime  
+    var bottom = $el.position().top;
+
+    if ($(window).scrollTop() > bottom) {
+      $('header.site-header').addClass('scrolled');
+    } else {
+      $('header.site-header').removeClass('scrolled');
+    }
+  });
+
+  $('.main-nav > li.menu-item.menu-item-has-children').on('click', function(e) {
+    e.preventDefault();
+    $(this).toggleClass('open');
+  })
+
   /*
    * Let's fire off the gravatar function
    * You can remove this if you don't need it

@@ -1,8 +1,13 @@
 <?php get_header(); ?>
 				
-				<header class="entry-header masthead-headline ">
-					<h1 class="masthead-headline">A really catching and witty, high converting headline goes here.</h1>
-					<p class="masthead-subhead">oioijaeopfjeofj oijf poaeijf oejf</p>
+				<header class="entry-header masthead-wrapper">
+					<div class="masthead-title">
+						<h1 class="masthead-headline">A really catching and witty, high converting headline goes here.</h1>
+						<p class="masthead-subhead">oioijaeopfjeofj oijf poaeijf oejf</p>
+					</div>
+					<div class="masthead-image">
+						<img src="<?php bloginfo('stylesheet_directory'); ?>/library/images/home-icon-pattern.svg" />
+					</div>
 				</header>
 
 			</header>
@@ -38,6 +43,24 @@
 									<p>oijef</p>
 									<p class="link"><a href="#" class="button button-small button-cta">Learn More</a></p>
 								</div>
+							</div>
+
+							<div class="home-section home-value-journey">
+								<h2>The Value Journey</h2>
+							</div>	
+
+							<div class="home-section home-clients">
+								<div class="home-clients-wrapper">
+									<h2 class="home-clients-heading">Clients Who Love Us:</h2>
+								</div>
+							</div>
+
+							<div class="home-section home-about-subscribe">
+
+							</div>
+
+							<div class="home-section home-insights-news-events">
+
 							</div>
 						</main>
 

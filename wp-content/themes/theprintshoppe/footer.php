@@ -34,6 +34,14 @@
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
 
+		<script>
+			// Elements to inject
+var mySVGsToInject = document.querySelectorAll('img.main-logo');
+
+// Do the injection
+SVGInjector(mySVGsToInject);
+		</script>
+
 	</body>
 
 </html> <!-- end of site. what a ride! -->

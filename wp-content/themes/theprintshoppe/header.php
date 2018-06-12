@@ -30,32 +30,42 @@
 	</head>
 	<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
 		<div id="container">
-			<header class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+			<?php
+
+			if(has_post_thumbnail(get_the_ID())) :
+				$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
+			endif;
+
+			?>
+			<header class="site-header" role="banner" itemscope itemtype="http://schema.org/WPHeader" <?php if(has_post_thumbnail(get_the_ID())) : ?> style="background: no-repeat url('<?php echo $thumbnail; ?>'); background-size: cover;" <?php endif; ?>>
 				<div class="inner-header">
 					<div class="row top-nav">
-						<p class="masthead-announcement">Testing 1, 2, 3</p>
+						<p class="masthead-announcement"><strong>Now Available:</strong> Our detailed guide to direct response marketing, <em>Brand Hacking</em> <a href="#" class="cta">Download Now <i class="fa fa-arrow-right"></i></a></p>
 						<p class="masthead-links">
-							<a href="#test">Pay Now</a>
+							<a href="#test">Upload a File</a>
+							<a href="#test">Make a Payment</a>
 						</p>
 					</div>
 					<div class="row main-nav-wrapper">
-						<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><img itemprop="logo" class="main-logo" src="<?php bloginfo('stylesheet_directory'); ?>/library/images/print-shoppe-austin-tx.svg" /></a></p>
-						<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-							<?php wp_nav_menu(array(
-	    					         'container' => false,                           // remove nav container
-	    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
-	    					         'menu' => __( 'The Main Menu', 'pstheme' ),  // nav name
-	    					         'menu_class' => 'nav main-nav cf',               // adding custom nav class
-	    					         'theme_location' => 'main-nav',                 // where it's located in the theme
-	    					         'before' => '',                                 // before the menu
-	        			               'after' => '',                                  // after the menu
-	        			               'link_before' => '',                            // before each link
-	        			               'link_after' => '',                             // after each link
-	        			               'depth' => 0,                                   // limit the depth of the nav
-	    					         'fallback_cb' => ''                             // fallback function (if there is one)
-							)); ?>
+						<div class="main-nav-inner-wrapper">
+							<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><img itemprop="logo" class="main-logo" src="<?php bloginfo('stylesheet_directory'); ?>/library/images/print-shoppe-austin-tx.svg" /></a></p>
+							<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+								<?php wp_nav_menu(array(
+		    					         'container' => false,                           // remove nav container
+		    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)
+		    					         'menu' => __( 'The Main Menu', 'pstheme' ),  // nav name
+		    					         'menu_class' => 'nav main-nav cf',               // adding custom nav class
+		    					         'theme_location' => 'main-nav',                 // where it's located in the theme
+		    					         'before' => '',                                 // before the menu
+		        			               'after' => '',                                  // after the menu
+		        			               'link_before' => '',                            // before each link
+		        			               'link_after' => '',                             // after each link
+		        			               'depth' => 0,                                   // limit the depth of the nav
+		    					         'fallback_cb' => ''                             // fallback function (if there is one)
+								)); ?>
 
-						</nav>
+							</nav>
+						</div>
 					</div>
 				</div>
 			

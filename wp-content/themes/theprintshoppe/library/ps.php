@@ -152,7 +152,10 @@ function ps_scripts_and_styles() {
     }
 
 		//adding scripts file in the footer
-		wp_register_script( 'ps-js', get_stylesheet_directory_uri() . '/library/js/scripts.js', array( 'jquery' ), '', true );
+		wp_register_script( 'ps-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array( 'jquery' ), '', true );
+
+		//adding svginjector file in the footer
+		wp_register_script( 'ps-svg-injector', get_stylesheet_directory_uri() . '/library/js/svg-injector.min.js', array( 'jquery' ), '', true );
 
 		// enqueue styles and scripts
 		wp_enqueue_script( 'ps-modernizr' );
@@ -169,6 +172,7 @@ function ps_scripts_and_styles() {
 		*/
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'ps-js' );
+		wp_enqueue_script( 'ps-svg-injector' );
 
 	}
 }
