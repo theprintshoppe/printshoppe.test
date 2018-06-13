@@ -30,6 +30,7 @@ function ps_howdy() {
   // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
   require_once( 'library/post-types/pt-team-members.php' );
   require_once( 'library/post-types/pt-resources.php' );
+  require_once( 'library/post-types/pt-news.php' );
 
   // launching operation cleanup
   add_action( 'init', 'ps_head_cleanup' );

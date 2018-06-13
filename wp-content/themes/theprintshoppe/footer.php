@@ -34,12 +34,37 @@
 		<?php // all js scripts are loaded in library/bones.php ?>
 		<?php wp_footer(); ?>
 
-		<script>
-			// Elements to inject
-var mySVGsToInject = document.querySelectorAll('img.main-logo');
+		<div id="mylightbox" class="lightbox-container">This div will be opened in a lightbox</div>
 
-// Do the injection
-SVGInjector(mySVGsToInject);
+		<script>
+			var mySVGsToInject = document.querySelectorAll('img.main-logo');
+			SVGInjector(mySVGsToInject);
+
+			jQuery(document).ready(function($) {
+				$('.request-proposal a').featherlight({
+					targetAttr: 'href'
+				});
+
+				$('.client-gallery').slick({
+				  	infinite: true,
+				  	slidesToShow: 4,
+				  	slidesToScroll: 4,
+				  	autoplay: true,
+  					autoplaySpeed: 2000,
+  					arrows: false,
+  					dots: false,
+				});
+
+				$('.slider').slick({
+				  	infinite: false,
+				  	slidesToShow: 3,
+				  	slidesToScroll: 1,
+  					arrows: true,
+  					dots: true,
+  					centerMode: true,
+  					variableWidth: true
+				});
+			});
 		</script>
 
 	</body>

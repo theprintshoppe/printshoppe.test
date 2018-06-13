@@ -104,7 +104,7 @@
 							padding: 0.5em 1em;
 							background: rgba(#fff, 0.9);
 							border-radius: 0.25em;
-							left: 0;
+							left: -1em;
 							min-width: 200px;
 							z-index: 99;
 
@@ -132,15 +132,16 @@
 
 				&.request-proposal {
 					float: right;
-					padding: 0.5em 1em;
-					margin: calc(0.75em - 2px) 0;
-					border: 2px solid $accent;
-					border-radius: 2em;
-					transition: all 1s;
+					margin: 1.25em 0;
+					padding: 0;
 
 					> a {
 						line-height: 1em;
 						color: $accent;
+						transition: all 1s;
+						padding: 0.5em 1em;
+						border: 2px solid $accent;
+						border-radius: 2em;
 						transition: all 1s;
 
 						&:before {
@@ -149,10 +150,10 @@
 					}
 
 					&:hover {
-						border-color: $secondary;
-
+						
 						> a {
 							color: $secondary;
+							border-color: $secondary;
 						}
 					}
 				}
@@ -196,19 +197,19 @@ header.site-header {
 							&.open {
 
 								ul.sub-menu {
-									top: 5em;
+									top: calc(4em + 3px);
 									border-radius: 0em;
 								}
 							}
 						}
 
 						&.request-proposal {
-							border: 2px solid $secondary;
 
 							> a {
 								line-height: 1em;
 								color: $secondary;
 								transition: all 1s;
+								border: 2px solid $secondary;
 
 								&:before {
 									display: none;
@@ -216,10 +217,10 @@ header.site-header {
 							}
 
 							&:hover {
-								border-color: $accent;
 
 								> a {
 									color: $accent;
+									border-color: $accent;
 								}
 							}
 						}

@@ -157,11 +157,26 @@ function ps_scripts_and_styles() {
 		//adding svginjector file in the footer
 		wp_register_script( 'ps-svg-injector', get_stylesheet_directory_uri() . '/library/js/svg-injector.min.js', array( 'jquery' ), '', true );
 
+		//adding slick script & style
+		wp_register_script( 'ps-slick-js', get_stylesheet_directory_uri() . '/library/slick/slick.min.js', array( 'jquery' ), '', true );
+		wp_register_style( 'ps-slick-css', get_stylesheet_directory_uri() . '/library/slick/slick.css', array(), '', 'all' );
+		wp_register_style( 'ps-slick-theme-css', get_stylesheet_directory_uri() . '/library/slick/slick-theme.css', array(), '', 'all' );
+
+		//adding featherlight script & style
+		wp_register_script( 'ps-featherlight-js', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.min.js', array( 'jquery' ), '', true );
+		wp_register_script( 'ps-featherlight-gallery-js', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.gallery.min.js', array( 'jquery' ), '', true );
+		wp_register_style( 'ps-featherlight-css', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.min.css', array(), '', 'all' );
+		wp_register_style( 'ps-featherlight-gallery-css', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.gallery.min.css', array(), '', 'all' );
+		
 		// enqueue styles and scripts
 		wp_enqueue_script( 'ps-modernizr' );
 		wp_enqueue_style( 'ps-stylesheet' );
 		// wp_enqueue_style( 'ps-fontawesome' );
 		wp_enqueue_style( 'ps-ie-only' );
+		wp_enqueue_style( 'ps-slick-css' );
+		wp_enqueue_style( 'ps-slick-theme-css' );
+		wp_enqueue_style( 'ps-featherlight-css' );
+		wp_enqueue_style( 'ps-featherlight-gallery-css' );
 
 		$wp_styles->add_data( 'ps-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
 
@@ -173,7 +188,9 @@ function ps_scripts_and_styles() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'ps-js' );
 		wp_enqueue_script( 'ps-svg-injector' );
-
+		wp_enqueue_script( 'ps-slick-js' );
+		wp_enqueue_script( 'ps-featherlight-js' );
+		wp_enqueue_script( 'ps-featherlight-gallery-js' );
 	}
 }
 
@@ -316,4 +333,56 @@ function ps_excerpt_more($more) {
 
 
 
-?>
+add_filter('post_gallery', 'ps_post_gallery', 10, 2);
+function ps_post_gallery($output, $attr) {
+    global $post;
+
+    if (isset($attr['orderby'])) {
+        $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
+        if (!$attr['orderby'])
+            unset($attr['orderby']);
+    }
+
+    extract(shortcode_atts(array(
+        'order' => 'ASC',
+        'orderby' => 'menu_order ID',
+        'id' => $post->ID,
+        'itemtag' => 'dl',
+        'icontag' => 'dt',
+        'captiontag' => 'dd',
+        'columns' => 3,
+        'size' => 'thumbnail',
+        'include' => '',
+        'exclude' => ''
+    ), $attr));
+
+    $id = intval($id);
+    if ('RAND' == $order) $orderby = 'none';
+
+    if (!empty($include)) {
+        $include = preg_replace('/[^0-9,]+/', '', $include);
+        $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+
+        $attachments = array();
+        foreach ($_attachments as $key => $val) {
+            $attachments[$val->ID] = $_attachments[$key];
+        }
+    }
+
+    if (empty($attachments)) return '';
+
+    // Here's your actual output, you may customize it to your need
+    $output = "<div class=\"slider slideshow-wrapper\">\n";
+    // Now you loop through each attachment
+    foreach ($attachments as $id => $attachment) {
+        // Fetch the thumbnail (or full image, it's up to you)
+//      $img = wp_get_attachment_image_src($id, 'medium');
+//      $img = wp_get_attachment_image_src($id, 'my-custom-image-size');
+        $img = wp_get_attachment_image_src($id, 'large');
+
+        $output .= "<img src=\"{$img[0]}\" width=\"{$img[1]}\" height=\"{$img[2]}\" alt=\"\" />\n";
+    }
+    $output .= "</div>\n";
+
+    return $output;
+}

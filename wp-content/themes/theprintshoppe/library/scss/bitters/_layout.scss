@@ -36,6 +36,14 @@ body {
 	flex: 1 0 auto;
 }
 
+.lightbox-container {
+	display: none;
+}
+
+.cf {
+	clear: both;
+}
+
 .row {
 	@include row();
 }
