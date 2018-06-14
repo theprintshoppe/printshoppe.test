@@ -151,11 +151,21 @@ function ps_scripts_and_styles() {
 		  wp_enqueue_script( 'comment-reply' );
     }
 
+    	/**********
+    	**
+    	** IMPORTANT:
+    	** ADD DEFER AND ASYNC ATTRIBUTES USING THE FILTER ON LINE 396 & 409
+    	**
+    	**********/
+
 		//adding scripts file in the footer
 		wp_register_script( 'ps-js', get_stylesheet_directory_uri() . '/library/js/scripts.min.js', array( 'jquery' ), '', true );
 
 		//adding svginjector file in the footer
 		wp_register_script( 'ps-svg-injector', get_stylesheet_directory_uri() . '/library/js/svg-injector.min.js', array( 'jquery' ), '', true );
+
+		//adding svginjector file in the footer
+		wp_register_script( 'ps-gmaps', get_stylesheet_directory_uri() . '/library/js/gmaps.min.js', array( 'jquery' ), '', true );
 
 		//adding slick script & style
 		wp_register_script( 'ps-slick-js', get_stylesheet_directory_uri() . '/library/slick/slick.min.js', array( 'jquery' ), '', true );
@@ -188,6 +198,7 @@ function ps_scripts_and_styles() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'ps-js' );
 		wp_enqueue_script( 'ps-svg-injector' );
+		wp_enqueue_script( 'ps-gmaps' );
 		wp_enqueue_script( 'ps-slick-js' );
 		wp_enqueue_script( 'ps-featherlight-js' );
 		wp_enqueue_script( 'ps-featherlight-gallery-js' );
@@ -386,3 +397,29 @@ function ps_post_gallery($output, $attr) {
 
     return $output;
 }
+
+function ps_add_defer_attribute($tag, $handle) {
+   // add script handles to the array below
+   $scripts_to_defer = array('ps-gmaps');
+   
+   foreach($scripts_to_defer as $defer_script) {
+      if ($defer_script === $handle) {
+         return str_replace(' src', ' defer="defer" src', $tag);
+      }
+   }
+   return $tag;
+}
+add_filter('script_loader_tag', 'ps_add_defer_attribute', 10, 2);
+
+function ps_add_async_attribute($tag, $handle) {
+   // add script handles to the array below
+   $scripts_to_async = array();
+   
+   foreach($scripts_to_async as $async_script) {
+      if ($async_script === $handle) {
+         return str_replace(' src', ' async="async" src', $tag);
+      }
+   }
+   return $tag;
+}
+add_filter('script_loader_tag', 'ps_add_async_attribute', 10, 2);

@@ -53,33 +53,20 @@
 								<div class="home-clients-wrapper">
 									<h2 class="home-clients-heading">Clients Who Trust Us:</h2>
 									<div class="client-gallery">
-										<div>
-											<h3>1</h3>
-										</div>
-										<div>
-											<h3>2</h3>
-										</div>
-										<div>
-											<h3>3</h3>
-										</div>
-										<div>
-											<h3>4</h3>
-										</div>
-										<div>
-											<h3>5</h3>
-										</div>
-										<div>
-											<h3>6</h3>
-										</div>
-										<div>
-											<h3>7</h3>
-										</div>
-										<div>
-											<h3>8</h3>
-										</div>
-										<div>
-											<h3>9</h3>
-										</div>
+										<?php 
+										$clients = get_field('ps_client_gallery');
+
+										if($clients): ?>
+
+											<?php foreach($clients as $client) :?>
+
+												<div>
+													<img src="<?php echo $client['sizes']['ps-client']; ?>" alt="<?php echo $client['alt']; ?>" />
+												</div>
+
+											<?php endforeach; ?>
+
+										<?php endif; ?>
 									</div>
 								</div>
 							</div>

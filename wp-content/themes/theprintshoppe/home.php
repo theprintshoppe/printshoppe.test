@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
 				<header class="entry-header">
-				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
-					the_archive_description( '<div class="taxonomy-description">', '</div>' );
-				?>
-
+					<h1 class="page-title" itemprop="headline">Insights</h1>
+					<div class="cf"></div>
+					<div class="subhead">
+						<p>Intro to our blog</p>
+					</div>
 				</header>
 
 			</header>
@@ -22,31 +22,43 @@
 
 							<article id="post-<?php the_ID(); ?>" <?php post_class( ); ?> role="article">
 
-								<header class="entry-header article-header">
+								<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+									<?php
 
-									<h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-									<p class="byline entry-meta vcard">
-										<?php printf( __( 'Posted', 'pstheme' ).' %1$s %2$s',
-                  							     /* the time the post was published */
-                  							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                       								/* the author of the post */
-                       								'<span class="by">'.__('by', 'pstheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                    							); ?>
-									</p>
+									if(has_post_thumbnail(get_the_ID())) :
+										$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
+									endif;
 
-								</header>
+									?>
+									<div class="post-thumbnail" <?php if(isset($thumbnail)) : ?>has-thumbnail<?php endif; ?>" role="banner" itemscope itemtype="http://schema.org/WPHeader" <?php if(isset($thumbnail)) : ?> style="background: no-repeat url('<?php echo $thumbnail; ?>'); background-size: cover;" <?php endif; ?>></div>
+									<div class="article-content">
+										<!-- Display the Title as a link to the Post's permalink. -->
+										<h4><?php the_title(); ?></h4>
 
-								<section class="entry-content">
+										<!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
+										<small><?php the_time( 'F jS, Y' ); ?> by <?php the_author(); ?></small>
+										 
+										<div class="entry">
+										  	<?php if(get_field('ps_subhead')) :
+										  		echo get_field('ps_subhead');
+										  	else :
+										  		// the_excerpt(); 
+										  	endif; ?>
+										</div>
 
-									<?php the_post_thumbnail( 'ps-thumb-300' ); ?>
+										<?php 
+										  	$cats = get_the_category();
+										  	$i = 0;
+										  	$cat_len = count($cats);
 
-									<?php the_excerpt(); ?>
+										?>
 
-								</section>
+										<p class="postmetadata"><?php esc_html_e( 'Posted in' ); ?> <?php foreach($cats as $category) : if($i == $cat_len - 1) : echo $category->cat_name; else : echo $category->cat_name . ', '; endif; $i++; endforeach; 	?></p>
 
-								<footer class="article-footer">
-
-								</footer>
+										<?php unset($thumbnail); ?>
+									</div>
+									<i class="fa fa-chevron-right arrow"></i>
+								</a>
 
 							</article>
 

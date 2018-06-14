@@ -110,6 +110,13 @@ function loadGravatars() {
 */
 jQuery(document).ready(function($) {
 
+  var $el = $('.main-nav-wrapper');  //record the elem so you don't crawl the DOM everytime  
+  var bottom = $el.position().top;
+
+  if ($(window).scrollTop() > bottom) {
+    $('header.site-header').addClass('scrolled');
+  }
+
   $(window).bind('scroll', function() {
     var $el = $('.main-nav-wrapper');  //record the elem so you don't crawl the DOM everytime  
     var bottom = $el.position().top;
@@ -121,9 +128,10 @@ jQuery(document).ready(function($) {
     }
   });
 
-  $('.main-nav > li.menu-item.menu-item-has-children').on('click', function(e) {
-    e.preventDefault();
-    $(this).toggleClass('open');
+  $('.main-nav > li.menu-item-has-children > a').on('click', function(e) {
+      e.preventDefault();
+      $(this).parent().toggleClass('open');
+      $(this).parent().siblings().removeClass('open');
   })
 
   /*

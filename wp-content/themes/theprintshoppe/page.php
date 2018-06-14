@@ -2,10 +2,14 @@
 
 				<header class="entry-header">
 					<h1 class="page-title" itemprop="headline"><?php the_title(); ?></h1>
+					<div class="cf"></div>
+					<?php if(get_field('ps_subhead')) : ?>
 
-					<p class="byline vcard">
-						<?php printf( __( 'Posted', 'pstheme').' <time class="updated" datetime="%1$s" itemprop="datePublished">%2$s</time> '.__( 'by',  'pstheme').' <span class="author">%3$s</span>', get_the_time('Y-m-j'), get_the_time(get_option('date_format')), get_the_author_link( get_the_author_meta( 'ID' ) )); ?>
-					</p>
+						<div class="subhead">
+							<?php echo get_field('ps_subhead'); ?>
+						</div>
+
+					<?php endif; ?>
 
 				</header>
 

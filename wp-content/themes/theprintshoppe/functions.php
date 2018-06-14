@@ -31,7 +31,8 @@ function ps_howdy() {
   require_once( 'library/post-types/pt-team-members.php' );
   require_once( 'library/post-types/pt-resources.php' );
   require_once( 'library/post-types/pt-news.php' );
-
+  require_once( 'library/post-types/pt-print.php' );
+  
   // launching operation cleanup
   add_action( 'init', 'ps_head_cleanup' );
   // A better title
@@ -75,6 +76,7 @@ if ( ! isset( $content_width ) ) {
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
+add_image_size( 'ps-client', 300, 100, false );
 add_image_size( 'ps-thumb-600', 600, 150, true );
 add_image_size( 'ps-thumb-300', 300, 100, true );
 

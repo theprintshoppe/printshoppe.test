@@ -19,6 +19,7 @@ body {
 	margin: 0 2em;
 	padding: 2em 0 0;
 	position: relative;
+	width: calc(100% - 4em);
 
 	&:before {
 		content: "";
@@ -40,9 +41,11 @@ body {
 	display: none;
 }
 
-.cf {
-	clear: both;
-}
+/*****
+**
+** Utilities
+**
+*****/
 
 .row {
 	@include row();
@@ -62,4 +65,9 @@ body {
 
 .one-fourth {
 	@include span-columns(3);
+}
+
+// Clearfix
+.cf {
+	clear: both;
 }

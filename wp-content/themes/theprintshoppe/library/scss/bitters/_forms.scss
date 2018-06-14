@@ -33,7 +33,7 @@ select[multiple] {
   box-shadow: $form-box-shadow;
   box-sizing: border-box;
   margin-bottom: $small-spacing;
-  padding: $base-spacing / 3;
+  padding: 0.5em;
   transition: border-color $base-duration $base-timing;
   width: 100%;
 
