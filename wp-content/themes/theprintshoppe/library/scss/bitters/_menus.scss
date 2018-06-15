@@ -17,6 +17,10 @@
 				position: relative;
 				vertical-align: middle;
 
+				&:before {
+					display: none;
+				}
+
 				> a {
 					font-weight: bold;
 					color: #fff;

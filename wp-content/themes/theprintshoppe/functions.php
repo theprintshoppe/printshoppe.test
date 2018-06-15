@@ -21,9 +21,6 @@ Let's get everything up and running.
 
 function ps_howdy() {
 
-  //Allow editor style.
-  add_editor_style( get_stylesheet_directory_uri() . '/library/css/editor-style.css' );
-
   // let's get language support going, if you need it
   load_theme_textdomain( 'pstheme', get_template_directory() . '/library/translation' );
 

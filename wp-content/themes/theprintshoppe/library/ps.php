@@ -308,23 +308,96 @@ PAGE NAVI
 // Numeric Page Navi (built into the theme by default)
 function ps_page_navi() {
   global $wp_query;
-  $bignum = 999999999;
-  if ( $wp_query->max_num_pages <= 1 )
-    return;
-  echo '<nav class="pagination">';
-  echo paginate_links( array(
-    'base'         => str_replace( $bignum, '%#%', esc_url( get_pagenum_link($bignum) ) ),
-    'format'       => '',
-    'current'      => max( 1, get_query_var('paged') ),
-    'total'        => $wp_query->max_num_pages,
-    'prev_text'    => '&larr;',
-    'next_text'    => '&rarr;',
-    'type'         => 'list',
-    'end_size'     => 3,
-    'mid_size'     => 3
-  ) );
-  echo '</nav>';
+  if($wp_query->max_num_pages > 1) :
+  	echo '<div class="load-more-button"><a class="button button-ghost">Load More</a></div>';
+  endif;
 } /* end page navi */
+
+// Ajax Load More
+function ps_load_more_scripts() {
+	global $wp_query;
+
+	wp_register_script('ps_load_more', get_stylesheet_directory_uri() . '/library/js/load-more.min.js', array('jquery'));
+
+	wp_localize_script('ps_load_more', 'ps_load_more_params' , array(
+		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php',
+		'posts' => json_encode($wp_query->query_vars),
+		'current_page' => get_query_var('paged') ? get_query_var('paged') : 1,
+		'max_page' => $wp_query->max_num_pages
+	));
+
+	wp_enqueue_script('ps_load_more');
+};
+add_action( 'wp_enqueue_scripts', 'ps_load_more_scripts' );
+
+function ps_load_more_ajax_handler(){
+ 
+	// prepare our arguments for the query
+	$args = json_decode( stripslashes( $_POST['query'] ), true );
+	$args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+	$args['post_status'] = 'publish';
+ 
+	// it is always better to use WP_Query but not here
+	query_posts( $args );
+ 
+	if( have_posts() ) :
+ 
+		// run the loop
+		while( have_posts() ): the_post(); ?>
+ 
+			<article id="post-<?php the_ID(); ?>" <?php post_class( ); ?> role="article">
+
+				<a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>">
+					<?php
+
+					if(has_post_thumbnail(get_the_ID())) :
+						$thumbnail = get_the_post_thumbnail_url(get_the_ID(), 'full');
+					endif;
+
+					?>
+					<div class="post-thumbnail" <?php if(isset($thumbnail)) : ?>has-thumbnail<?php endif; ?>" role="banner" itemscope itemtype="http://schema.org/WPHeader" <?php if(isset($thumbnail)) : ?> style="background: no-repeat url('<?php echo $thumbnail; ?>'); background-size: cover;" <?php endif; ?>></div>
+					<div class="article-content">
+						<!-- Display the Title as a link to the Post's permalink. -->
+						<h4><?php the_title(); ?></h4>
+
+						<!-- Display the date (November 16th, 2009 format) and a link to other posts by this posts author. -->
+						<small><?php the_time( 'F jS, Y' ); ?> by <?php the_author(); ?></small>
+						 
+						<div class="entry">
+						  	<?php if(get_field('ps_subhead')) :
+						  		echo get_field('ps_subhead');
+						  	else :
+						  		// the_excerpt(); 
+						  	endif; ?>
+						</div>
+
+						<?php 
+						  	$cats = get_the_category();
+						  	$i = 0;
+						  	$cat_len = count($cats);
+
+						?>
+
+						<p class="postmetadata"><?php esc_html_e( 'Posted in' ); ?> <?php foreach($cats as $category) : if($i == $cat_len - 1) : echo $category->cat_name; else : echo $category->cat_name . ', '; endif; $i++; endforeach; 	?></p>
+
+						<?php unset($thumbnail); ?>
+					</div>
+					<i class="fa fa-chevron-right arrow"></i>
+				</a>
+
+			</article>
+ 
+ 
+		<?php endwhile;
+ 
+	endif;
+	die; // here we exit the script and even no wp_reset_query() required!
+}
+ 
+ 
+ 
+add_action('wp_ajax_loadmore', 'ps_load_more_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_loadmore', 'ps_load_more_ajax_handler'); // wp_ajax_nopriv_{action}
 
 /*********************
 RANDOM CLEANUP ITEMS
@@ -423,3 +496,51 @@ function ps_add_async_attribute($tag, $handle) {
    return $tag;
 }
 add_filter('script_loader_tag', 'ps_add_async_attribute', 10, 2);
+
+
+function ps_estimated_reading_time() {
+
+    $post = get_post();
+
+    $words = str_word_count( strip_tags( $post->post_content ) );
+    $minutes = floor( $words / 120 );
+    $seconds = floor( $words % 120 / ( 120 / 60 ) );
+
+    if ( 1 <= $minutes ) {
+        $estimated_time = $minutes . ' minute' . ($minutes == 1 ? '' : 's') . ', ' . $seconds . ' second' . ($seconds == 1 ? '' : 's');
+    } else {
+        $estimated_time = $seconds . ' second' . ($seconds == 1 ? '' : 's');
+    }
+
+    return $estimated_time;
+
+}
+
+add_filter('wp_nav_menu_objects', 'ps_wp_nav_menu_objects', 10, 2);
+function ps_wp_nav_menu_objects( $items, $args ) {
+	foreach( $items as &$item ) {
+		$icon = get_field('ps_menu_item_icon', $item);
+		$subtitle = get_field('ps_menu_item_subtitle', $item);
+		if( $icon && $subtitle ) {	
+			$item->title = '<div class="menu-item-has-icon-subtitle"><div class="menu-item-icon">' . $icon . '</div><div class="menu-item-content"><span class="menu-item-title">' . $item->title . '</span><span class="menu-item-subtitle">' . $subtitle . '</div></div>';
+		} elseif ( $icon ) {
+			$item->title = '<div class="menu-item-has-icon">' . $icon . '<span class="menu-item-title">' . $item->title . '</span></div>';
+		} elseif ($subtitle) {
+			$item->title = '<div class="menu-item-has-subtitle"><span class="menu-item-title">' . $item->title . '</span><span class="menu-item-subtitle">' . $subtitle . '</span></div>';
+		}
+	}
+	return $items;	
+}
+
+//add_filter( 'nav_menu_link_attributes', 'wpse121123_contact_menu_atts', 10, 3 );
+function wpse121123_contact_menu_atts( $atts, $item, $args )
+{
+  // The ID of the target menu item
+  $menu_target = 123;
+
+  // inspect $item
+  if ($item->ID == $menu_target) {
+    $atts['data-toggle'] = 'modal';
+  }
+  return $atts;
+}

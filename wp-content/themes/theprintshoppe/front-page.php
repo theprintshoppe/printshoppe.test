@@ -2,8 +2,8 @@
 				
 				<header class="entry-header masthead-wrapper">
 					<div class="masthead-title">
-						<h1 class="masthead-headline">A really catching and witty, high converting headline goes here.</h1>
-						<p class="masthead-subhead">oioijaeopfjeofj oijf poaeijf oejf</p>
+						<h1 class="masthead-headline">Let's Put Your Best Brand Forward.</h1>
+						<p class="masthead-subhead">Build a better brand, </p>
 					</div>
 					<div class="masthead-image">
 						<img src="<?php bloginfo('stylesheet_directory'); ?>/library/images/home-icon-pattern.svg" />

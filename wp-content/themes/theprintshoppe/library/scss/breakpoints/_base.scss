@@ -3,7 +3,10 @@ header.site-header {
 	padding: 0 0 10em;
 	@include outer-container(100%);
 	background: url('../images/purple-background.svg') repeat top center;
-	background-position: fixed;
+	background-attachment: fixed !important;
+	border-top: 3px solid $primary;
+	border-image: linear-gradient(to left, $primary-shade, $accent);
+	border-image-slice: 1;
 
 	&:before {
 		content: "";
@@ -75,10 +78,6 @@ header.site-header {
 
 					.main-logo {
 						max-height: 60px;
-
-						.cls-1, .cls-2 {
-							fill: #fff;
-						}
 					}
 				}
 
@@ -110,6 +109,9 @@ header.site-header {
 					box-shadow: 0px 2px 2px rgba(#333, 0.2);
 					transition: all 0s;
 					padding: 0;
+					border-top: 3px solid $primary;
+					border-image: linear-gradient(to left, $primary-shade, $accent);
+					border-image-slice: 1;
 
 					.main-nav-inner-wrapper {
 						@include outer-container(1440px);
@@ -349,9 +351,100 @@ footer.site-footer {
 
 .single-ps_print {
 
+	header.site-header {
+		padding-bottom: 5em;
+
+		.entry-header {
+			@include outer-container(1440px);
+
+			.entry-image {
+				@include span-columns(6);
+
+				.product-featured-image {
+
+					img {
+						max-width: 100%;
+					}
+				}
+			}
+
+			.entry-info {
+				@include span-columns(6);
+
+				h4.product-title {
+					font-family: $special;
+					text-transform: uppercase;
+					color: #fff;
+					margin: 0;
+					font-style: normal;
+					font-weight: bold;
+				}
+
+				h1.page-title {
+					@include span-columns(12);
+
+					&.has-product-title {
+						margin-top: 0.25em;
+					}
+				}
+
+				.subhead {
+
+					p, ul, ol {
+						font-size: 1em;
+						color: rgba(#fff, 0.8);
+					}
+				}
+
+				.entry-info-cta {
+					margin-top: 2em;
+				}
+
+				padding-bottom: 3em;
+			}
+		}
+	}
+
 	#content {
 		#inner-content {
 			@include outer-container(1440px);
+
+			.product-keys {
+				text-align: center;
+
+				.product-keys-wrapper {
+					background: #FFF;
+					border-radius: 0.5em 0.5em 0 0;
+					box-shadow: 0px 3px 6px 0px rgba(#666, 0.5);
+					//@include outer-container(1120px);
+					margin: -5em auto 3em;
+					display: inline-block;
+
+					.product-key-row {
+						width: 100%;
+						max-width: calc(1120px / 4);
+						position: relative;
+						padding: 2em 1.5em 2em 5em;
+						display: inline-block;
+						text-align: left;
+
+						.product-key-icon {
+							font-size: 1em;
+						    position: absolute;
+						    top: 2em;
+						    left: 1em;
+						    color: #fff;
+						    padding: 0.5em;
+						    background: $primary-pastel;
+						    width: 3em;
+						    height: 3em;
+						    line-height: 2em;
+						    text-align: center;
+						    border-radius: 2em;
+						}
+					}
+				}
+			}
 
 			main {
 				@include span-columns(12);
@@ -419,7 +512,7 @@ footer.site-footer {
 							right: 0;
 							top: 0;
 							height: 100%;
-							width: 60%;
+							width: 50%;
 							z-index: 1;
 
 							&:before {
@@ -475,7 +568,7 @@ footer.site-footer {
 					}
 
 					&:hover {
-						box-shadow: 0px 0px 6px 0px rgba(#333, 0.7);
+						box-shadow: 0px 2px 4px 0px rgba(#666, 0.5);
 						cursor: pointer;
 
 						> a {
@@ -485,6 +578,10 @@ footer.site-footer {
 							}
 						}
 					}
+				}
+
+				.load-more-button {
+					text-align: center;
 				}
 			}
 
@@ -502,7 +599,6 @@ footer.site-footer {
 .home {
 
 	header.site-header {
-		background: url('../images/purple-background.svg') repeat top center;
 		padding-bottom: 0;
 		max-height: 40em;
 		overflow: hidden;
@@ -615,6 +711,7 @@ footer.site-footer {
 						position: absolute;
 						background: url('../images/idea-guide-mockup.jpg') no-repeat center center;
 						background-size: cover;
+						background-attachment: fixed;
 						filter: grayscale(1) blur(3px) opacity(15%);
 						top: 0;
 						left: 0;
@@ -723,7 +820,7 @@ footer.site-footer {
 								}
 
 								&:hover {
-									box-shadow: 0px 0px 6px 0px rgba(#333, 0.7);
+									box-shadow: 0px 3px 6px 0px rgba(#666, 0.5);
 									cursor: pointer;
 
 									.arrow {
