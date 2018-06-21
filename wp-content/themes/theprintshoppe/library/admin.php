@@ -144,4 +144,8 @@ function ps_custom_admin_footer() {
 // adding it to the admin area
 add_filter( 'admin_footer_text', 'ps_custom_admin_footer' );
 
-?>
+function load_custom_wp_admin_style() {
+        wp_register_style( 'custom_css', get_template_directory_uri() . '/library/css/admin.css', false, '1.0.0' );
+        wp_enqueue_style( 'custom_css' );
+}
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );

@@ -256,7 +256,8 @@ function ps_theme_support() {
 	register_nav_menus(
 		array(
 			'main-nav' => __( 'The Main Menu', 'pstheme' ),   // main nav in header
-			'footer-links' => __( 'Footer Links', 'pstheme' ) // secondary nav in footer
+			'footer-services-nav' => __( 'Footer Services', 'pstheme' ), // secondary nav in footer
+			'footer-resources-nav' => __( 'Footer Resources', 'pstheme' ) // secondary nav in footer
 		)
 	);
 
@@ -524,7 +525,7 @@ function ps_wp_nav_menu_objects( $items, $args ) {
 		if( $icon && $subtitle ) {	
 			$item->title = '<div class="menu-item-has-icon-subtitle"><div class="menu-item-icon">' . $icon . '</div><div class="menu-item-content"><span class="menu-item-title">' . $item->title . '</span><span class="menu-item-subtitle">' . $subtitle . '</div></div>';
 		} elseif ( $icon ) {
-			$item->title = '<div class="menu-item-has-icon">' . $icon . '<span class="menu-item-title">' . $item->title . '</span></div>';
+			$item->title = '<div class="menu-item-has-icon"><div class="menu-item-icon">' . $icon . '</div><span class="menu-item-title">' . $item->title . '</span></div>';
 		} elseif ($subtitle) {
 			$item->title = '<div class="menu-item-has-subtitle"><span class="menu-item-title">' . $item->title . '</span><span class="menu-item-subtitle">' . $subtitle . '</span></div>';
 		}
@@ -532,15 +533,24 @@ function ps_wp_nav_menu_objects( $items, $args ) {
 	return $items;	
 }
 
-//add_filter( 'nav_menu_link_attributes', 'wpse121123_contact_menu_atts', 10, 3 );
-function wpse121123_contact_menu_atts( $atts, $item, $args )
-{
+add_filter( 'nav_menu_link_attributes', 'ps_add_featherlight_to_nav', 10, 3 );
+function ps_add_featherlight_to_nav( $atts, $item, $args ) {
   // The ID of the target menu item
-  $menu_target = 123;
+  $menu_target = 21;
 
   // inspect $item
   if ($item->ID == $menu_target) {
-    $atts['data-toggle'] = 'modal';
+    $atts['data-featherlight'] = '#proposal';
   }
   return $atts;
+}
+
+function ps_product_add_keep_reading_link( $field_name ) {
+	
+	$content_raw = wp_strip_all_tags(get_field( $field_name ));
+
+	$content = wpautop($content_raw . ' <a data-featherlight="#fl-product-story" class="link-cta">Keep Reading</a>');
+	
+	return $content;
+	
 }

@@ -3,7 +3,7 @@ ul {
 	list-style-type: none;
 	
 	  li {
-	  	padding-left: 1em;
+	  	padding-left: 1.5em;
 	  	position: relative;
 
 	  	&:before {
@@ -21,6 +21,36 @@ ul {
 		    line-height: 2;
 	  	}
 	  }
+
+	  &.check-circle {
+	  	
+	  	li {
+
+		  	&:before {
+		  		content: '\f058';
+		  	}
+		}
+	}
+
+	  &.check {
+
+	  	li {
+	  		
+		  	&:before {
+		  		content: '\f00c';
+		  	}
+		}
+	}
+
+	  &.arrow {
+
+	  	li {
+	  		
+		  	&:before {
+		  		content: '\f30b';
+		  	}
+		}
+	}
 }
 
 ol {

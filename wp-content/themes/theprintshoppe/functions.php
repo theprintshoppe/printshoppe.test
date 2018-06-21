@@ -12,7 +12,7 @@ sidebars, comments, etc.
 require_once( 'library/ps.php' );
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
-// require_once( 'library/admin.php' );
+require_once( 'library/admin.php' );
 
 /*********************
 LAUNCH BONES
@@ -74,6 +74,7 @@ if ( ! isset( $content_width ) ) {
 
 // Thumbnail sizes
 add_image_size( 'ps-client', 300, 100, false );
+add_image_size( 'ps-product-feature', 600, 600 , false );
 add_image_size( 'ps-thumb-600', 600, 150, true );
 add_image_size( 'ps-thumb-300', 300, 100, true );
 

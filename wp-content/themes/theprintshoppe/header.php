@@ -40,7 +40,7 @@
 			<header class="site-header <?php if(isset($thumbnail)) : ?>has-thumbnail<?php endif; ?>" role="banner" itemscope itemtype="http://schema.org/WPHeader" <?php if(isset($thumbnail)) : ?> style="background: no-repeat url('<?php echo $thumbnail; ?>'); background-size: cover;" <?php endif; ?>>
 				<div class="inner-header">
 					<div class="row top-nav">
-						<p class="masthead-announcement"><strong>Now Available:</strong> Our detailed guide to direct response marketing, <em>Brand Hacking</em> <a href="#" class="cta">Download Now <i class="fa fa-arrow-right"></i></a></p>
+						<p class="masthead-announcement"><strong>Now Available:</strong> Our detailed guide to direct response marketing, <em>Brand Hacking</em> <a href="#" class="link-cta">Download Now</a></p>
 						<p class="masthead-links">
 							<a href="#test">Sample Request</a>
 							<a href="#test">Upload a File</a>

@@ -17,6 +17,28 @@ URL: http://themble.com/bones/
 // Flush rewrite rules for custom post types
 add_action( 'after_switch_theme', 'ps_flush_rewrite_rules' );
 
+register_taxonomy( 'ps_print_cat', 
+		array('ps_print'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
+		array('hierarchical' => true,     /* if this is true, it acts like categories */
+			'labels' => array(
+				'name' => __( 'Print Category', 'pstheme' ), /* name of the custom taxonomy */
+				'singular_name' => __( 'Print Category', 'pstheme' ), /* single taxonomy name */
+				'search_items' =>  __( 'Search Print Categories', 'pstheme' ), /* search title for taxomony */
+				'all_items' => __( 'All Print Categories', 'pstheme' ), /* all title for taxonomies */
+				'parent_item' => __( 'Parent Print Category', 'pstheme' ), /* parent title for taxonomy */
+				'parent_item_colon' => __( 'Parent Print Category:', 'pstheme' ), /* parent taxonomy title */
+				'edit_item' => __( 'Edit Print Category', 'pstheme' ), /* edit custom taxonomy title */
+				'update_item' => __( 'Update Print Category', 'pstheme' ), /* update title for taxonomy */
+				'add_new_item' => __( 'Add New Print Category', 'pstheme' ), /* add new title for taxonomy */
+				'new_item_name' => __( 'New Print Category Name', 'pstheme' ) /* name title for taxonomy */
+			),
+			'show_admin_column' => true, 
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'printssentials' ),
+		)
+	);
+
 // let's create the function for the custom type
 function ps_print_pt() { 
 	// creating (registering) the custom type 
@@ -45,7 +67,7 @@ function ps_print_pt() {
 			'query_var' => true,
 			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */ 
 			'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-			'rewrite'	=> array( 'slug' => 'printssentials', 'with_front' => false ), /* you can specify its url slug */
+			'rewrite'	=> array( 'slug' => 'printssentials/%ps_print_cat%', 'with_front' => false ), /* you can specify its url slug */
 			'has_archive' => 'printssentials', /* you can rename the slug here */
 			'capability_type' => 'page',
 			'hierarchical' => true,
@@ -55,7 +77,7 @@ function ps_print_pt() {
 	); /* end of register post type */
 	
 	/* this adds your post categories to your custom post type */
-	register_taxonomy_for_object_type( 'category', 'ps_resource_types' );
+	register_taxonomy_for_object_type( 'category', 'ps_print_cat' );
 	
 }
 
@@ -68,25 +90,15 @@ function ps_print_pt() {
 	*/
 	
 	// now let's add custom categories (these act like categories)
-	register_taxonomy( 'ps_news_types', 
-		array('ps_news'), /* if you change the name of register_post_type( 'custom_type', then you have to change this */
-		array('hierarchical' => true,     /* if this is true, it acts like categories */
-			'labels' => array(
-				'name' => __( 'Type', 'pstheme' ), /* name of the custom taxonomy */
-				'singular_name' => __( 'Type', 'pstheme' ), /* single taxonomy name */
-				'search_items' =>  __( 'Search Types', 'pstheme' ), /* search title for taxomony */
-				'all_items' => __( 'All Types', 'pstheme' ), /* all title for taxonomies */
-				'parent_item' => __( 'Parent Type', 'pstheme' ), /* parent title for taxonomy */
-				'parent_item_colon' => __( 'Parent Type:', 'pstheme' ), /* parent taxonomy title */
-				'edit_item' => __( 'Edit Type', 'pstheme' ), /* edit custom taxonomy title */
-				'update_item' => __( 'Update Type', 'pstheme' ), /* update title for taxonomy */
-				'add_new_item' => __( 'Add New Type', 'pstheme' ), /* add new title for taxonomy */
-				'new_item_name' => __( 'New Type Name', 'pstheme' ) /* name title for taxonomy */
-			),
-			'show_admin_column' => true, 
-			'show_ui' => true,
-			'query_var' => true,
-			'rewrite' => array( 'slug' => 'resources/type' ),
-		)
-	);
-?>
+	
+
+function wpa_show_permalinks( $post_link, $post ){
+    if ( is_object( $post ) && $post->post_type == 'ps_print' ){
+        $terms = wp_get_object_terms( $post->ID, 'ps_print_cat' );
+        if( $terms ){
+            return str_replace( '%ps_print_cat%' , $terms[0]->slug , $post_link );
+        }
+    }
+    return $post_link;
+}
+add_filter( 'post_type_link', 'wpa_show_permalinks', 1, 2 );

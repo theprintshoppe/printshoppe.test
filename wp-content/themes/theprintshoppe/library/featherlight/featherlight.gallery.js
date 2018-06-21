@@ -106,8 +106,8 @@
 
 	$.extend(FeatherlightGallery.prototype, {
 		/** Additional settings for Gallery **/
-		previousIcon: '&#9664;',     /* Code that is used as previous icon */
-		nextIcon: '&#9654;',         /* Code that is used as next icon */
+		previousIcon: '<i class="fa fa-chevron-left"></i>',     /* Code that is used as previous icon */
+		nextIcon: '<i class="fa fa-chevron-right"></i>',         /* Code that is used as next icon */
 		galleryFadeIn: 100,          /* fadeIn speed when image is loaded */
 		galleryFadeOut: 300,         /* fadeOut speed before image is loaded */
 

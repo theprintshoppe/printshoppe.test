@@ -117,6 +117,7 @@ jQuery(document).ready(function($) {
   // Remove links that don't actually link to anything
   .not('[href="#"]')
   .not('[href="#0"]')
+  .not('[href="#proposal"]')
   .click(function(event) {
     // On-page links
     if (
@@ -149,6 +150,14 @@ jQuery(document).ready(function($) {
         });
       }
     }
+  });
+
+  $(function() {
+   $('a[href^="mailto:"]').each(function() {
+    this.href = this.href.replace('(at)', '@').replace(/\(dot\)/g, '.');
+    // Remove this line if you don't want to set the email address as link text:
+    this.innerHTML = this.href.replace('mailto:', '');
+   });
   });
 
   var $el = $('.main-nav-wrapper');  //record the elem so you don't crawl the DOM everytime  

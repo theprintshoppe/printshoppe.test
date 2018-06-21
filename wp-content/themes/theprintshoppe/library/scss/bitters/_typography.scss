@@ -147,6 +147,37 @@ a {
     font-weight: 900;
     font-size: 0.75em;
   }
+
+  &[data-featherlight] {
+    cursor: pointer;
+  }
+
+  &.link-cta {
+
+    &:after {
+      font-family: $icon;
+      content: '\f061';
+      display: inline-block;
+      font-style: normal;
+      font-variant: normal;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      font-weight: 900;
+      font-size: 0.75em;
+      margin-left: -1em;
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    &:hover {
+
+      &:after {
+        display: inline-block;
+        opacity: 1;
+        margin-left: 1em;
+      }
+    }
+  }
 }
 
 hr {
@@ -155,6 +186,22 @@ hr {
   border-right: 0;
   border-top: 0;
   margin: $base-spacing 0;
+}
+
+.large-text {
+  font-size: 1.25em;
+}
+
+.v-large-text {
+  font-size: 1.55em;
+}
+
+.small-text {
+  font-size: 0.875em;
+}
+
+.v-small-text {
+  font-size: 0.75em;
 }
 
 /***********************************************************************************************/

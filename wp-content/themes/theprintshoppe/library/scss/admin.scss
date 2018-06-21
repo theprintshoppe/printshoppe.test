@@ -10,3 +10,17 @@ is empty, but you can just start dropping your styles here to
 start customizing. All admin functions are located in lib/admin/
 
 ******************************************************************/
+
+.wp-admin.nav-menus-php {
+	.acf-menu-item-fields {
+		width: 100%;
+	}
+}
+
+#wpadminbar {
+	.quicklinks {
+		.ab-top-secondary>li.admin-bar-search {
+			display: none;
+		}
+	}
+}

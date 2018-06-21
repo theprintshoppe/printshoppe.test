@@ -55,14 +55,14 @@ html.with-featherlight {
 	display: inline-block;
 
 	/* dimensions: cut off images */
-	overflow: auto;
+
 	padding: 25px 25px 0;
 	border-bottom: 25px solid transparent;
 
 	/* dimensions: handling large content */
-	margin-left: 5%;
-	margin-right: 5%;
-	max-height: 95%;
+	margin-left: 5em;
+	margin-right: 5em;
+	max-height: 95vh;
 
 	/* styling */
 	background: #fff;
@@ -76,6 +76,10 @@ html.with-featherlight {
 .featherlight .featherlight-inner {
 	/* make sure its visible */
 	display: block;
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100%;
+	width: 100%;
 }
 
 /* don't show these though */

@@ -67,6 +67,10 @@ body {
 	@include span-columns(3);
 }
 
+.omega {
+	@inlcude omega();
+}
+
 // Clearfix
 .cf {
 	clear: both;
