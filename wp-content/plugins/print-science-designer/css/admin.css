@@ -1,0 +1,15 @@
+.api_form .help-icon{
+	float:right;
+	margin:3px 5px 0 4px;
+}
+.api_form label span{
+	float:left;
+	width:170px;
+}
+.ui-tooltip {
+	background: black;
+	border: 1px solid white;
+	color: white;
+	font-size:12px;
+	padding:3px 7px;
+}

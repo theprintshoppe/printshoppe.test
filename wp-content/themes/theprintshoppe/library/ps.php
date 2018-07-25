@@ -167,6 +167,10 @@ function ps_scripts_and_styles() {
 		//adding svginjector file in the footer
 		wp_register_script( 'ps-gmaps', get_stylesheet_directory_uri() . '/library/js/gmaps.min.js', array( 'jquery' ), '', true );
 
+		//adding selectFx file in the footer
+		wp_register_script( 'ps-classie-js', get_stylesheet_directory_uri() . '/library/js/classie.min.js', array( 'jquery' ), '', true );
+		wp_register_script( 'ps-select-fx-js', get_stylesheet_directory_uri() . '/library/js/selectFx.min.js', array( 'jquery' ), '', true );
+
 		//adding slick script & style
 		wp_register_script( 'ps-slick-js', get_stylesheet_directory_uri() . '/library/slick/slick.min.js', array( 'jquery' ), '', true );
 		wp_register_style( 'ps-slick-css', get_stylesheet_directory_uri() . '/library/slick/slick.css', array(), '', 'all' );
@@ -180,7 +184,7 @@ function ps_scripts_and_styles() {
 		
 		// enqueue styles and scripts
 		wp_enqueue_script( 'ps-modernizr' );
-		wp_enqueue_style( 'ps-stylesheet' );
+		wp_enqueue_style( 'ps-stylesheet' );		
 		// wp_enqueue_style( 'ps-fontawesome' );
 		wp_enqueue_style( 'ps-ie-only' );
 		wp_enqueue_style( 'ps-slick-css' );
@@ -202,6 +206,8 @@ function ps_scripts_and_styles() {
 		wp_enqueue_script( 'ps-slick-js' );
 		wp_enqueue_script( 'ps-featherlight-js' );
 		wp_enqueue_script( 'ps-featherlight-gallery-js' );
+		wp_enqueue_script( 'ps-classie-js' );
+		wp_enqueue_script( 'ps-select-fx-js' );
 	}
 }
 
@@ -535,15 +541,17 @@ function ps_wp_nav_menu_objects( $items, $args ) {
 
 add_filter( 'nav_menu_link_attributes', 'ps_add_featherlight_to_nav', 10, 3 );
 function ps_add_featherlight_to_nav( $atts, $item, $args ) {
-  // The ID of the target menu item
-  $menu_target = 21;
+  global $post;
+  $menu_item_ID = $item;
+  $destination = $atts['href'];
 
-  // inspect $item
-  if ($item->ID == $menu_target) {
-    $atts['data-featherlight'] = '#proposal';
+  if (get_field('ps_menu_item_featherlight' , $item->ID)) {
+    $atts['data-featherlight'] = $destination;
   }
   return $atts;
 }
+
+
 
 function ps_product_add_keep_reading_link( $field_name ) {
 	
@@ -554,3 +562,12 @@ function ps_product_add_keep_reading_link( $field_name ) {
 	return $content;
 	
 }
+
+function ps_add_slug_body_class( $classes ) {
+	global $post;
+	if ( isset( $post ) ) {
+		$classes[] = $post->post_type . '-' . $post->post_name;
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'ps_add_slug_body_class' );

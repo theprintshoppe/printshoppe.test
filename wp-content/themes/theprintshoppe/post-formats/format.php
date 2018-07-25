@@ -28,6 +28,6 @@
 
                 
 
-                <?php //comments_template(); ?>
+                <?php comments_template(); ?>
 
               </article> <?php // end article ?>

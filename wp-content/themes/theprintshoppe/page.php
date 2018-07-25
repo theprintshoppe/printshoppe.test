@@ -51,12 +51,6 @@
 									?>
 								</section> <?php // end article section ?>
 
-								<footer class="article-footer">
-
-								</footer>
-
-								<?php comments_template(); ?>
-
 							</article>
 
 							<?php endwhile; endif; ?>

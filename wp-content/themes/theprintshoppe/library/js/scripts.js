@@ -117,7 +117,8 @@ jQuery(document).ready(function($) {
   // Remove links that don't actually link to anything
   .not('[href="#"]')
   .not('[href="#0"]')
-  .not('[href="#proposal"]')
+  .not('[data-featherlight]')
+  .not('.mobile-nav ul li.menu-item-has-children a')
   .click(function(event) {
     // On-page links
     if (
@@ -133,25 +134,21 @@ jQuery(document).ready(function($) {
         // Only prevent default if animation is actually gonna happen
         event.preventDefault();
         var headerHeight = $('.main-nav-wrapper').outerHeight();
+        var finalTarget = target.offset().top - headerHeight - 100;
 
         $('html, body').animate({
-          scrollTop: target.offset().top
-        }, 1000, function() {
-          // Callback after animation
-          // Must change focus!
-          var $target = $(target);
-          $target.focus();
-          if ($target.is(":focus")) { // Checking if the target was focused
-            return false;
-          } else {
-            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
-            $target.focus(); // Set focus again
-          };
-        });
+          scrollTop: finalTarget
+        }, 1000);
+
+        var finalTarget = 0;
       }
     }
   });
 
+
+  /*
+   *  Obfuscate email addresses.
+  */
   $(function() {
    $('a[href^="mailto:"]').each(function() {
     this.href = this.href.replace('(at)', '@').replace(/\(dot\)/g, '.');
@@ -160,6 +157,9 @@ jQuery(document).ready(function($) {
    });
   });
 
+  /*
+   * Sticky Navigation
+  */
   var $el = $('.main-nav-wrapper');  //record the elem so you don't crawl the DOM everytime  
   var bottom = $el.position().top;
 
@@ -178,11 +178,77 @@ jQuery(document).ready(function($) {
     }
   });
 
+  /*
+   * Submenus (for the main menu)
+  */
   $('.main-nav > li.menu-item-has-children > a').on('click', function(e) {
       e.preventDefault();
       $(this).parent().toggleClass('open');
       $(this).parent().siblings().removeClass('open');
   })
+
+  /*
+   * Mobile Navigation
+  */
+
+  // 1. Make a copy of the navigation at the end of the document
+  $('nav.main-nav').clone().removeClass('main-nav').addClass('mobile-nav').appendTo('body').children('ul.main-nav').removeClass('main-nav').addClass('mobile-nav');
+
+  // 2. Open the mobile nav when needed
+  $('.mobile-nav-trigger').on('click', function() {
+    $(this).toggleClass('close');
+    $(this).children('i').toggleClass('fa-bars').toggleClass('fa-times');
+    if(!$('header.site-header').hasClass('scrolled') || $(window).scrollTop() == 0) {
+      $('header.site-header').toggleClass('scrolled');
+    }
+    $('nav.mobile-nav').toggleClass('open');
+  });
+
+  $('ul.mobile-nav > li.menu-item-has-children').on('click', function(e) {
+    e.preventDefault();
+    if($(this).children('.sub-menu').children('.mobile-nav-back').length === 0) {
+      $(this).children('.sub-menu').prepend('<a class="mobile-nav-back"><i class="fas fa-chevron-left"></i> Back</a>');
+    }
+    $(this).toggleClass('open');
+  });
+
+   $('.mobile-nav-back').on('click', function(e) {
+    e.preventDefault();
+   // $(this).parent().toggleClass('open');
+    $(this).remove();
+  });
+
+   $('ul.mobile-nav > li.menu-item-has-children .sub-menu li.menu-item').on('click', function(e) {
+    e.preventDefault();
+   });
+
+  /*
+   * Home Page Tabs
+  */
+  // Fix the height of the slides
+  linkHeight = $('.home-hero-tabs .links').outerHeight();
+  tabHeight = -1;
+  $('.home-hero-tabs .slides .slide .slide-content').each(function() {
+    tabHeight = tabHeight > $(this).outerHeight() ? tabHeight : $(this).outerHeight();
+  });
+
+  if(tabHeight < linkHeight) {
+    $('.home-hero-tabs .slides').css('min-height', 'calc(' + linkHeight + 'px + 4em)' );
+    $('.home-hero-tabs .slides .slide .slide-content').css('min-height', 'calc(' + linkHeight + 'px + 4em)' );
+  } else {
+    $('.home-hero-tabs .slides').css('min-height', 'calc(' + tabHeight + 'px + 4em)' );
+    $('.home-hero-tabs .slides .slide .slide-content').css('min-height', 'calc(' + tabHeight + 'px + 4em)' );
+  }
+
+  // Make the tabs work
+  $('.home-hero-tabs .links .link').not('.link-heading').on('click', function() {
+    target = $(this).data('target');
+
+    $(this).siblings().removeClass('active');
+    $(this).addClass('active');
+    $('.home-hero-tabs .slides .slide').removeClass('active');
+    $('.home-hero-tabs .slides .slide[data-content="' + target + '"]').addClass('active');
+  });
 
   /*
    * Let's fire off the gravatar function

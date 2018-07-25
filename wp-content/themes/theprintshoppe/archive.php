@@ -1,10 +1,8 @@
 <?php get_header(); ?>
 
 				<header class="entry-header">
-					<?php
-							the_archive_title( '<h1 class="page-title">', '</h1>' );
-							the_archive_description( '<div class="taxonomy-description">', '</div>' );
-							?>
+					<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+					<div class="subhead"><?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?></div>
 
 				</header>
 
@@ -23,15 +21,7 @@
 								<header class="entry-header article-header">
 
 									<h3 class="h2 entry-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-									<p class="byline entry-meta vcard">
-										<?php printf( __( 'Posted', 'pstheme' ).' %1$s %2$s',
-                  							     /* the time the post was published */
-                  							     '<time class="updated entry-time" datetime="' . get_the_time('Y-m-d') . '" itemprop="datePublished">' . get_the_time(get_option('date_format')) . '</time>',
-                       								/* the author of the post */
-                       								'<span class="by">'.__('by', 'pstheme').'</span> <span class="entry-author author" itemprop="author" itemscope itemptype="http://schema.org/Person">' . get_the_author_link( get_the_author_meta( 'ID' ) ) . '</span>'
-                    							); ?>
-									</p>
-
+								
 								</header>
 
 								<section class="entry-content">
@@ -69,8 +59,6 @@
 							<?php endif; ?>
 
 						</main>
-
-					<?php get_sidebar(); ?>
 
 				</div>
 

@@ -32,7 +32,7 @@ select[multiple] {
   border-radius: $base-border-radius;
   box-shadow: $form-box-shadow;
   box-sizing: border-box;
-  margin-bottom: $small-spacing;
+  margin-bottom: 0;
   padding: 0.5em;
   transition: border-color $base-duration $base-timing;
   width: 100%;
@@ -57,6 +57,36 @@ select[multiple] {
   }
 }
 
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio] + label {
+  padding-left: 2em;
+  font-weight: 300;
+  font-size: 0.875em;
+
+  &:before {
+    content: "\f111";
+    font-family: $icon;
+    color: $primary;
+    font-weight: 300;
+    margin-left: -1.375em;
+    margin-bottom: -1px;
+    width: 1em;
+    padding-right: 0.5em;
+    font-size: 1.25em;
+    position: relative;
+    bottom: -2px;
+  }
+}
+
+input[type=radio]:checked + label {
+  &:before {
+    content: "\f058";
+  }
+}
+
 textarea {
   resize: vertical;
 }
@@ -65,19 +95,13 @@ textarea {
   appearance: none;
 }
 
-[type="checkbox"],
-[type="radio"] {
-  display: inline;
-  margin-right: $small-spacing / 2;
-}
-
 [type="file"] {
   margin-bottom: $small-spacing;
   width: 100%;
 }
 
 select {
-  margin-bottom: $small-spacing;
+  margin-bottom: 0;
   max-width: 100%;
   width: auto;
 }

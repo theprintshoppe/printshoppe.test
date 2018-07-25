@@ -48,7 +48,7 @@
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>
-						<p class="entry-info-cta"><a data-featherlight="#proposal" class="button button-alt button-cta">Request A Proposal</a></p>
+						<p class="entry-info-cta"><a href="<?php bloginfo('url'); ?>/proposal" class="button button-alt button-cta">Request A Proposal</a></p>
 					</div>
 				</header>
 
@@ -56,7 +56,7 @@
 
 			<div id="content">
 
-				<div id="inner-content" <?php if ( FLBuilderModel::is_builder_enabled() ) : ?> class="bb-enabled" <?php endif; ?>>
+				<div id="inner-content">
 					<?php if(have_rows('ps_product_keys')) : ?>
 
 						<div class="product-keys">
@@ -81,6 +81,14 @@
 						</div>
 
 					<?php endif;?>
+
+					<aside id="process" class="print-process">
+
+							<p>We view every project as an opportunity to showcase the value print can bring to your brand. <strong>Clients like you trust us to guide them to finding that value.</strong> Every project is treated with care and is put through our meticulous process:</p>
+
+							<?php ps_part_print_process(); ?>
+
+						</aside>
 
 					<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 

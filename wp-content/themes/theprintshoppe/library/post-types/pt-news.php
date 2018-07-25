@@ -37,7 +37,7 @@ function ps_news_pt() {
 			'not_found_in_trash' => __( 'Nothing found in Trash', 'pstheme' ), /* This displays if there is nothing in the trash */
 			'parent_item_colon' => ''
 			), /* end of arrays */
-			'description' => __( 'This is the example team member', 'pstheme' ), /* Custom Type Description */
+			'description' => __( 'News &amp; press about the Print Shoppe', 'pstheme' ), /* Custom Type Description */
 			'public' => true,
 			'publicly_queryable' => true,
 			'exclude_from_search' => false,

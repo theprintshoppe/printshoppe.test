@@ -29,6 +29,10 @@ function ps_howdy() {
   require_once( 'library/post-types/pt-resources.php' );
   require_once( 'library/post-types/pt-news.php' );
   require_once( 'library/post-types/pt-print.php' );
+
+  /************* HELPER FILES *************/
+  // Template Parts stored in Functions
+  require_once( 'parts/part-print-process.php' );
   
   // launching operation cleanup
   add_action( 'init', 'ps_head_cleanup' );
@@ -245,5 +249,7 @@ function ps_fonts() {
 }
 
 add_action('wp_enqueue_scripts', 'ps_fonts');
+
+
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

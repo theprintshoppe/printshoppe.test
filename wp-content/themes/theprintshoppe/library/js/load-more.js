@@ -17,7 +17,7 @@ jQuery(function($){
 			},
 			success : function( data ){
 				if( data ) { 
-					button.html( 'Load More' ).parent().before(data).hide().fadeIn(); // insert new posts
+					button.html( 'Load More' ).parent().siblings(".more-articles").hide().html(data).fadeIn().removeClass('more-articles').addClass('articles').after('<div class="more-articles"></div>'); // insert new posts
 					ps_load_more_params.current_page++;
  
 					if ( ps_load_more_params.current_page == ps_load_more_params.max_page ) 

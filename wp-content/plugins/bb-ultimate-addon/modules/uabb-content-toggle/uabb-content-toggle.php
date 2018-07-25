@@ -5,21 +5,21 @@
  */
 class UABBContentToggleModule extends FLBuilderModule {
 
-	/**
-	 * @method __construct
-	 */
-	public function __construct() {
-		parent::__construct( array(
-			'name'          => __('Content Toggle', 'uabb'),
-			'description'   => __('An animated content toggle.', 'uabb'),
-			'category'      => BB_Ultimate_Addon_Helper::module_cat( BB_Ultimate_Addon_Helper::$content_modules ),
+    /**
+     * @method __construct
+     */
+    public function __construct() {
+        parent::__construct( array(
+            'name'          => __('Content Toggle', 'uabb'),
+            'description'   => __('An animated content toggle.', 'uabb'),
+            'category'      => BB_Ultimate_Addon_Helper::module_cat( BB_Ultimate_Addon_Helper::$content_modules ),
             'group'         => UABB_CAT,
-			'dir'           => BB_ULTIMATE_ADDON_DIR . 'modules/uabb-content-toggle/',
+            'dir'           => BB_ULTIMATE_ADDON_DIR . 'modules/uabb-content-toggle/',
             'url'           => BB_ULTIMATE_ADDON_URL . 'modules/uabb-content-toggle/',
             'partial_refresh'  => true,
             'icon'             => 'content-toggle.svg',
-		) );
-	}
+        ) );
+    }
 
     /**
     * @method get_icons
@@ -112,6 +112,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                             'type'          => 'text',
                             'selector'      => '.uabb-rbs-head-1',
                         ),
+                        'connections'   => array( 'string', 'html' )
                     ),
                     'cont1_section'   => array(
                         'type'          => 'select',
@@ -155,6 +156,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                             'type'          => 'text',
                             'selector'      => '.uabb-rbs-toggle-sections .uabb-rbs-content-1',
                         ),
+                        'connections'   => array( 'string', 'html' )
                     ),
                     'cont1_saved_rows'      => array(
                         'type'                  => 'select',
@@ -175,9 +177,9 @@ FLBuilder::register_module('UABBContentToggleModule', array(
             ),
         )
     ),
-	'general_content2'      => array( // Tab
-		'title'         => __('Content 2', 'uabb'), 
-		'sections'      => array(
+    'general_content2'      => array( // Tab
+        'title'         => __('Content 2', 'uabb'), 
+        'sections'      => array(
             'content2'    =>  array(
                 'fields'    => array(
                     'cont2_heading'     => array(
@@ -188,6 +190,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                             'type'          => 'text',
                             'selector'      => '.uabb-rbs-head-2',
                         ),
+                        'connections'   => array( 'string', 'html' )
                     ),
                     'cont2_section'   => array(
                         'type'          => 'select',
@@ -230,7 +233,8 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'preview'       => array(
                             'type'          => 'text',
                             'selector'      => '.uabb-rbs-toggle-sections .uabb-rbs-content-2',
-                        )
+                        ),
+                        'connections'   => array( 'string', 'html' )
                     ),
                     'cont2_saved_rows'      => array(
                         'type'                  => 'select',
@@ -249,11 +253,11 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                     ) 
                 )
             ),
-		)
-	),
-	'style'      => array( // Tab
-	'title'         => __('Style', 'uabb'), 
-	'sections'      => array( 
+        )
+    ),
+    'style'      => array( // Tab
+    'title'         => __('Style', 'uabb'), 
+    'sections'      => array( 
         'switcher'    =>  array(
             'title'     => __('Switcher', 'uabb' ) ,
             'fields'    => array(
@@ -279,6 +283,25 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'rectangle'  => __('Rectangle', 'uabb'),
                         'label_box'  => __('Label Box', 'uabb')
                     ),
+                    'toggle'        => array(
+                        'label_box'    => array(
+                            'fields'        => array( 'label_box_off', 'label_box_on' ),
+                        ),
+                    ),
+                ),
+                'label_box_on'     => array(
+                    'type'          => 'text',
+                    'label'         => __('ON Text field', 'uabb'),
+                    'default'       => 'ON',
+                    'placeholder'   => 'ON',
+                    'connections'   => array( 'string', 'html' )          
+                ), 
+                'label_box_off'     => array(
+                    'type'          => 'text',
+                    'label'         => __('OFF Text field', 'uabb'),
+                    'default'       => 'OFF',
+                    'placeholder'   => 'OFF',
+                    'connections'   => array( 'string', 'html' )
                 ),
                 'color1'        => array( 
                     'type'         => 'color',
@@ -518,7 +541,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
         'content'    =>  array(
             'title'     => __('Content', 'uabb' ) ,
             'fields'    => array(
-            	'advanced_sec' => array(
+                'advanced_sec' => array(
                     'type'          => 'select',
                     'label'         => __( 'Advanced', 'uabb' ),
                     'default'       => 'off',
@@ -532,7 +555,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         ),
                     )
                 ),
-            	'background_color_sec'       => array(
+                'background_color_sec'       => array(
                     'type'          => 'color',
                     'label'         => __( 'Background Color', 'uabb' ),
                     'default'       => '',
@@ -542,8 +565,8 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'selector'      => '.uabb-rbs-toggle-sections',
                         'property'      => 'background-color'
                     ),
-               	),
-               	'border_type_sec'    => array(
+                ),
+                'border_type_sec'    => array(
                     'type'          => 'select',
                     'label'         => __( 'Border Type', 'uabb' ),
                     'default'       => 'None',
@@ -611,13 +634,13 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                     'type'          => 'dimension',
                     'label'       => __( 'Padding', 'uabb' ),
                     'description' => 'px',
-				    'responsive'  => array(
-						'placeholder' => array(
-							'default'  =>  '',
-							'medium'    =>  '24',
-							'responsive'  => '16',
-						),
-					),
+                    'responsive'  => array(
+                        'placeholder' => array(
+                            'default'  =>  '',
+                            'medium'    =>  '24',
+                            'responsive'  => '16',
+                        ),
+                    ),
                     'preview'       => array(
                         'type'          => 'css',
                         'selector'      => '.uabb-rbs-toggle-sections',
@@ -630,7 +653,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
         'spacing'    =>  array(
             'title'     => __('Spacing', 'uabb' ) ,
             'fields'    => array(
-            	'button_heading_size'     => array(
+                'button_heading_size'     => array(
                     'type'          => 'unit',
                     'label'         => __( 'Button & Headings Spacing', 'uabb' ),
                     'default'       => '20',
@@ -664,8 +687,8 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                 ),   
             )
         ),
-	)
-	),
+    )
+    ),
       
     'typography' =>array(
         'title'         => __('Typography', 'uabb'), 
@@ -739,7 +762,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'label'         => __( 'Transform', 'uabb' ),
                         'default'       => 'none', 
                         'options'       => array(
-                            'none'           =>  'Default',
+                            'none'              =>  'Default',
                             'uppercase'         =>  'UPPERCASE',
                             'lowercase'         =>  'lowercase',
                             'capitalize'        =>  'Capitalize'                 
@@ -834,7 +857,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'label'         => __( 'Transform', 'uabb' ),
                         'default'       => 'inherit',
                         'options'       => array(
-                            'inherit'            =>  'Normal',
+                            'inherit'           =>  'Default',
                             'uppercase'         =>  'UPPERCASE',
                             'lowercase'         =>  'lowercase',
                             'capitalize'        =>  'Capitalize'                 
@@ -929,7 +952,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'label'         => __( 'Transform', 'uabb' ),
                         'default'       => 'none',
                         'options'       => array(
-                            'none'           =>  'Default',
+                            'none'              =>  'Default',
                             'uppercase'         =>  'UPPERCASE',
                             'lowercase'         =>  'lowercase',
                             'capitalize'        =>  'Capitalize'                 
@@ -1024,7 +1047,7 @@ FLBuilder::register_module('UABBContentToggleModule', array(
                         'label'         => __( 'Transform', 'uabb' ),
                         'default'       => 'none',
                         'options'       => array(
-                            'none'           =>  'Default',
+                            'none'              =>  'Default',
                             'uppercase'         =>  'UPPERCASE',
                             'lowercase'         =>  'lowercase',
                             'capitalize'        =>  'Capitalize'                 

@@ -24,7 +24,7 @@
         <meta name="theme-color" content="#484a9a">
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 		<?php // wordpress head functions ?>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
 	</head>
@@ -42,15 +42,16 @@
 					<div class="row top-nav">
 						<p class="masthead-announcement"><strong>Now Available:</strong> Our detailed guide to direct response marketing, <em>Brand Hacking</em> <a href="#" class="link-cta">Download Now</a></p>
 						<p class="masthead-links">
-							<a href="#test">Sample Request</a>
-							<a href="#test">Upload a File</a>
-							<a href="#test">Make a Payment</a>
+							<a href="#upload-file" data-fetherlight="#upload-file">Upload a File</a>
+							<a href="#payment" data-fetherlight="payment">Make a Payment</a>
 						</p>
 					</div>
 					<div class="row main-nav-wrapper">
 						<div class="main-nav-inner-wrapper">
+							<p class="mobile-call"><a href="tel:512-328-9206"><i class="fas fa-phone"></i></a></p>
 							<p id="logo" class="h1" itemscope itemtype="http://schema.org/Organization"><a href="<?php echo home_url(); ?>" rel="nofollow"><img itemprop="logo" class="main-logo" src="<?php bloginfo('stylesheet_directory'); ?>/library/images/print-shoppe-austin-tx.svg" /></a></p>
-							<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+							<div class="mobile-nav-trigger"><i class="fas fa-bars"></i></div>
+							<nav role="navigation" class="main-nav" itemscope itemtype="http://schema.org/SiteNavigationElement">
 								<?php wp_nav_menu(array(
 		    					         'container' => false,                           // remove nav container
 		    					         'container_class' => 'menu cf',                 // class of container (should you choose to use it)

@@ -22,7 +22,7 @@ ul {
 	  	}
 	  }
 
-	  &.check-circle {
+	&.check-circle {
 	  	
 	  	li {
 
@@ -32,7 +32,18 @@ ul {
 		}
 	}
 
-	  &.check {
+	&.check-circle-empty {
+	  	
+	  	li {
+
+		  	&:before {
+		  		content: '\f058';
+		  		font-weight: 200;
+		  	}
+		}
+	}
+
+	&.check {
 
 	  	li {
 	  		
@@ -54,10 +65,33 @@ ul {
 }
 
 ol {
-	padding-left: 1.5em;
+	counter-reset:li;
+	margin-left:0;
+	padding-left: 1em;
+	
+	> li {
+		padding-left: 1.5em;
+		position: relative;
+		list-style: none;
 
-	li {
-		padding-left: 0.5em;
+		&:before {
+			content:counter(li); /* Use the counter as content */
+			counter-increment:li;
+			position: absolute;
+		    font-style: normal;
+		    font-variant: normal;
+		    text-rendering: auto;
+		    -webkit-font-smoothing: antialiased;
+		   	font-weight: 900;
+		    font-size: 0.75em;
+		    top: 0;
+		    left: 0;
+		    width: calc(4em / 3);
+		    //height: calc(4em / 3);
+		    line-height: 1;
+		    color: $primary;
+		    transform: translateY(50%);
+		}
 	}
 }
 

@@ -10,12 +10,12 @@
 
 				<div class="inner-footer-wrap">
 
-					<div class="one-fourth footer-column footer-column-logo-about">
+					<div class="footer-column footer-column-logo-about">
 						<div class="footer-logo">
 							<a href="<?php echo home_url(); ?>" rel="nofollow"><img itemprop="logo" class="main-logo-footer" src="<?php bloginfo('stylesheet_directory'); ?>/library/images/print-shoppe-austin-tx.svg" /></a>
 						</div>
 						<div class="footer-blurb">
-							<p>SIojaof ej foajoeijf aoij eoif a jeofj aopijf opaiej foiaj eoif jao ijefoi ajefi aos efjpoaij feoaijf oisj efj aef </p>
+							<p>We fuel massive growth for your brand using the most proven marketing channel: print.</p>
 							<p><a href="<?php bloginfo('url'); ?>/company" class="link-cta">More About Us</i></a></p>
 						</div>
 						<div class="footer-important-info">
@@ -23,7 +23,7 @@
 							<a href="<?php bloginfo('url'); ?>/terms/">Terms + Conditions</a> 
 						</div>
 					</div>
-					<div class="one-fourth footer-column footer-column-services">
+					<div class="footer-column footer-column-services">
 						<h3>What We Do</h3>
 						<div class="footer-services-nav">
 							<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -45,7 +45,7 @@
 						</div>
 
 					</div>
-					<div class="one-fourth footer-column footer-column-resources">
+					<div class="footer-column footer-column-resources">
 						<h3>Resources</h3>
 						<div class="footer-resources-nav">
 							<nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -66,9 +66,9 @@
 							</nav>
 						</div>
 					</div>
-					<div class="one-fourth omega footer-column footer-column-contact">
+					<div class="omega footer-column footer-column-contact">
 						<h3>Contact Us</h3>
-						<p class="footer-contact-cta"><a href="#proposal" data-featherlight class="button button-small">Request a Proposal</a> <a href="#proposal" data-featherlight class="button button-alt button-ghost button-small">Upload a File</a></p>
+						<p class="footer-contact-cta"><a href="<?php bloginfo('url'); ?>/proposal" class="button button-small">Request a Proposal</a> <a href="<?php bloginfo('url'); ?>/upload" class="button button-alt button-ghost button-small">Upload a File</a></p>
 						<p class="footer-contact-row email"><i class="fas fa-at"></i><a href="mailto:sales(at)printshoppe(dot)net">sales@printshoppe.net</a></p>
 						<p class="footer-contact-row phone"><i class="fas fa-phone"></i>512-328-9206</p>
 						<p class="footer-contact-row address"><i class="fas fa-map-marker-alt"></i>5321 Industrial Oaks Blvd,<br />Suite 128<br />Austin, TX 78735</p>
@@ -89,18 +89,15 @@
 				<?php echo get_field('ps_product_story'); ?>
 		</div>
 		<?php endif; ?>
-		<div id="proposal" class="lightbox-container">This div will be opened in a lightbox</div>
 		<div id="printShoppeIcon"><img src="<?php bloginfo('stylesheet_directory'); ?>/library/images/print-shoppe-icon.svg" /><p>5321 Industrial Oaks Blvd<br />Suite 128<br />Austin, TX 78735<br /><a href="https://www.google.com/maps/place/The+Print+Shoppe/@30.2389098,-97.8409883,18z/data=!4m5!3m4!1s0x0:0xb6f7d70d253f9473!8m2!3d30.2388481!4d-97.8397221" target="_blank">Directions</a></p></div>
 		<script>
 			var mySVGsToInject = document.querySelectorAll('img.main-logo');
 			SVGInjector(mySVGsToInject);
 			var mySVGsToInject2 = document.querySelectorAll('img.main-logo-footer');
 			SVGInjector(mySVGsToInject2);
-
+			
 			jQuery(document).ready(function($) {
-				$('.request-proposal a').featherlight({
-					targetAttr: '#proposal'
-				});
+
 
 				$('.client-gallery').slick({
 				  	infinite: true,
