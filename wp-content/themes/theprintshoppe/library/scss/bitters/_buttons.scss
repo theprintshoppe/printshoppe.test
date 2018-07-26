@@ -1,7 +1,13 @@
+a.button,
 .button,
 button,
 input[type="button"],
-input[type="submit"], {
+input[type="submit"],
+.woocommerce input[type=submit],
+.woocommerce a.button,
+.woocommerce .button,
+.woocommerce button,
+.woocommerce input[type="button"], {
   appearance: none;
   background-color: $secondary;
   border: 2px solid transparent;
@@ -37,7 +43,9 @@ input[type="submit"], {
   }
 }
 
-.button-alt {
+.button-alt,
+a.button-alt,
+.woocommerce .button-alt {
   background-color: $base;
   color: $primary;
 
@@ -48,7 +56,8 @@ input[type="submit"], {
   }
 }
 
-.button-ghost {
+.button-ghost,
+a.button-ghost {
   background-color: transparent;
   border: 2px solid $secondary;
   color: $secondary;
@@ -61,7 +70,8 @@ input[type="submit"], {
   }
 }
 
-.button-cta {
+.button-cta,
+a.button-cta {
 
   &:after {
     font-family: $icon;
@@ -116,7 +126,8 @@ input[type="submit"], {
   }
 }
 
-.button-small {
+.button-small,
+a.button-small {
   font-size: 0.75em;
   padding: 0.75em 1em;
   border-radius: 1.5em;

@@ -250,6 +250,11 @@ jQuery(document).ready(function($) {
     $('.home-hero-tabs .slides .slide[data-content="' + target + '"]').addClass('active');
   });
 
+  // Woocommerce make customers agree to the proof warning.
+  if( $('.woocommerce-checkout #content .proof-warnging').length === 0 ) {
+    
+  }
+
   /*
    * Let's fire off the gravatar function
    * You can remove this if you don't need it

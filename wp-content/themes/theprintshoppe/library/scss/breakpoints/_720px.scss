@@ -381,10 +381,6 @@ footer.site-footer {
 
 				&.footer-column-contact {
 
-					p.footer-contact-cta {
-						margin: 2em 0;
-					}
-
 					p.footer-contact-row {
 						margin: 0.5em 0;
 						padding-left: 2em;
@@ -1518,6 +1514,140 @@ footer.site-footer {
 
 					h1 {
 						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.woocommerce-page {
+
+	&.woocommerce-cart {
+
+		#content {
+
+			section.entry-content {
+				float: left;
+
+				.woocommerce {
+					@include outer-container(100%);
+					
+					.shop_table_responsive {
+						font-size: 1em;
+						@include span-columns(8);
+						margin-right: 2.3576515979% !important;
+
+						tbody {
+
+							tr.cart_item {
+
+								td {
+									padding:  1em 1.5em;
+
+									&.product-thumb {
+
+										.print-products-area {
+
+											.artwork-files-list {
+
+												li {
+													width: calc(33% - 10px);
+												}
+											}
+										}
+									}
+
+									&.product-name {
+
+										a {
+											font-size: 1.25em;
+										}
+
+										.print-products-area {
+
+											.modify-attr {
+
+												.button {
+													font-size: 1em;
+												}
+											}
+										}
+									}
+
+									&.product-quantity {
+										width: 50%;
+										border-top: 1px solid #ddd;
+
+										&:before {
+											font-weight: bold;
+											content: "Quantity:";
+										}
+									}
+
+									&.product-subtotal {
+										width: 50%;
+										border-top: 1px solid #ddd;
+
+										&:before {
+											font-weight: bold;
+											content: "Price:";
+										}
+									}
+								}
+
+								&:nth-last-child(2) {
+									border-bottom: 1px solid rgba($primary-tint, 0.5);
+								}						
+							}
+
+							tr.actions-tr {
+								float: left;
+									width: 100%;
+
+								td.actions {
+									border: 0;
+									padding: 0;
+									text-align: left;
+									float: left;
+									width: 100%;
+
+									.coupon {
+										border: 1px solid #ddd;
+										padding: 0 1em;
+										float: left;
+										width: 100%;
+										text-align: left;
+
+										input[type=text] {
+											margin: 1em 0;
+											float: left;
+											width: 50%;
+										}
+
+										input[type=submit] {
+											margin: 1em 0;
+											padding: 0.5em 1em;
+											float: right;
+											width: 45%;
+											background: none;
+											border-color: $secondary;
+											color: $secondary;
+										}
+									}
+
+									input[type=submit][name=update_cart] {
+										margin: 1em;
+										padding: 0.75em 1.5em;
+									}
+								}
+							}
+						}
+					}
+
+					.cart-collaterals {
+						@include span-columns(4);
+						@include omega();
 					}
 				}
 			}

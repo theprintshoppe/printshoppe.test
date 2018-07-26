@@ -134,6 +134,18 @@ new image size.
   - Create some sanitize functions to sanitize inputs
   - Create some boilerplate Sections, Controls and Settings
 */
+/**
+ * Set WooCommerce image dimensions upon theme activation
+ */
+// Remove each style one by one
+add_filter( 'woocommerce_enqueue_styles', 'jk_dequeue_styles' );
+function jk_dequeue_styles( $enqueue_styles ) {
+  //unset( $enqueue_styles['woocommerce-general'] );  // Remove the gloss
+  unset( $enqueue_styles['woocommerce-layout'] );   // Remove the layout
+  unset( $enqueue_styles['woocommerce-smallscreen'] );  // Remove the smallscreen optimisation
+  return $enqueue_styles;
+}
+
 
 function ps_theme_customizer($wp_customize) {
   // $wp_customize calls go here.
@@ -250,6 +262,24 @@ function ps_fonts() {
 
 add_action('wp_enqueue_scripts', 'ps_fonts');
 
+$woocommerce_disable_product_list_price = get_option('woocommerce_disable_product_list_price');
+add_filter('wc_get_template', 'ps_print_products_woo_get_template', 5, 2);
+function ps_print_products_woo_get_template($located, $template_name) {
+  global $product, $woocommerce_disable_product_list_price;
+  $print_type = false;
+  $product_type = print_products_get_type($product->id);
+  if (print_products_is_wp2print_type($product_type)) { $print_type = true; }
 
-
-/* DON'T DELETE THIS CLOSING TAG */ ?>
+  $ptemplate = '';
+  switch ($template_name) {
+    case 'cart/cart.php':
+      if (!print_products_designer_installed()) {
+        $ptemplate = 'cart.php';
+      }
+    break;
+  }
+  if (strlen($ptemplate)) {
+    $located = dirname(__FILE__).'/woocommerce/cart/'.$ptemplate;
+  }
+  return $located;
+}
