@@ -938,13 +938,18 @@ footer.site-footer {
 
 						a.product-link {
 							padding: 1em;
-							font-size: 1.5em;
+							font-size: 1.125em;
 							font-weight: bold;
 							color: $primary;
 							position: relative;
 							transition: all 0.5s;
 							float: left;
 							width: 100%;
+
+							span {
+								transition: all 0.5s;
+								display: block;
+							}
 
 							i {
 								position: absolute;
@@ -958,8 +963,12 @@ footer.site-footer {
 							&:hover {
 								background: #eee;
 
+								span {
+									transform: translateX(0.5em);
+								}
+
 								i {
-									transform: translate(50%, -50%);
+									transform: translate(0.5em, -50%);
 									opacity: 1;
 								}
 							}

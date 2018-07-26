@@ -44,7 +44,7 @@
 									        echo '<h2>'.$custom_term->name.'</h2>';
 
 									        while($loop->have_posts()) : $loop->the_post();
-									            echo '<a href="'.get_permalink().'" class="product-link">'.get_the_title().'<i class="fas fa-chevron-right"></i></a>';
+									            echo '<a href="'.get_permalink().'" class="product-link"><span>'.get_the_title().'</span><i class="fas fa-chevron-right"></i></a>';
 									        endwhile;
 									    echo '</div>';
 								     }	
