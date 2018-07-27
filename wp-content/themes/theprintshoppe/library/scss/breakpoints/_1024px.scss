@@ -897,6 +897,7 @@ footer.site-footer {
 			.masthead-title {
 				@include span-columns(6);
 				padding: 0 3em;
+				text-align: left;
 
 				.masthead-headline {
 					color: #fff;
@@ -1019,6 +1020,7 @@ footer.site-footer {
 					background: #cccccc;
 					padding: 5em 0;
 					position: relative;
+					margin-top: 3em;
 
 					&:before {
 						content: "";

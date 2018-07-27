@@ -547,54 +547,59 @@ footer.site-footer {
 
 			main {
 
-				.single-product
-				
-					.woocommerce-product-gallery__trigger {
+				section.entry-content {
+					float: left;
+					width: 100%;
 
-						img {
-							display: none;
+					.single-product {
+					
+						.woocommerce-product-gallery__trigger {
+
+							img {
+								display: none;
+							}
 						}
-					}
 
-					.summary {
+						.summary {
 
-						.print-products-area {
+							.print-products-area {
 
-							form {
+								form {
 
-								ul.product-attributes-list {
+									ul.product-attributes-list {
 
-									li {
-										padding: 0;
+										li {
+											padding: 0;
 
-										label {
-											padding-top: 0;
-										}
+											label {
+												padding-top: 0;
+											}
 
-										br {
-											display: none;
-										}
+											br {
+												display: none;
+											}
 
-										select {
-											background: #efefef;
-											border: inherit;
-											height: auto;
-											font-weight: 300;
+											select {
+												background: #efefef;
+												border: inherit;
+												height: auto;
+												font-weight: 300;
+											}
 
-										}
-
-										&:before {
-											display: none;
+											&:before {
+												display: none;
+											}
 										}
 									}
-								}
 
-								.product-price {
-									font-weight: bold;
+									.product-price {
+										font-weight: bold;
+									}
 								}
 							}
 						}
 					}
+				}
 			}
 		}
 	}
@@ -1551,6 +1556,7 @@ footer.site-footer {
 					background: #cccccc;
 					padding: 2em 0;
 					position: relative;
+					margin-top: 2em;
 
 					&:before {
 						content: "";
@@ -1929,6 +1935,31 @@ footer.site-footer {
 														content: "\f30b";
 														margin-left: 0.5em;
 														font-family: $icon;
+													}
+												}
+											}
+										}
+
+										dl.variation {
+											float: left;
+											width: 100%;
+											margin-top: 0.5em;
+
+											dt, dd {
+												float: left;
+												line-height: 1;
+												clear: none;
+												display: block;
+
+												p {
+													line-height: 1;
+
+													em {
+														font-style: normal;
+
+														a {
+															font-size: 1em;
+														}
 													}
 												}
 											}

@@ -3058,29 +3058,32 @@ footer.site-footer .inner-footer .inner-footer-wrap .footer-column.footer-column
   margin-top: 3em;
 }
 
-.woocommerce.single-product #content #inner-content main .single-product
-.woocommerce-product-gallery__trigger img {
+.woocommerce.single-product #content #inner-content main section.entry-content {
+  float: left;
+  width: 100%;
+}
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .woocommerce-product-gallery__trigger img {
   display: none;
 }
-.woocommerce.single-product #content #inner-content main .summary .print-products-area form ul.product-attributes-list li {
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .summary .print-products-area form ul.product-attributes-list li {
   padding: 0;
 }
-.woocommerce.single-product #content #inner-content main .summary .print-products-area form ul.product-attributes-list li label {
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .summary .print-products-area form ul.product-attributes-list li label {
   padding-top: 0;
 }
-.woocommerce.single-product #content #inner-content main .summary .print-products-area form ul.product-attributes-list li br {
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .summary .print-products-area form ul.product-attributes-list li br {
   display: none;
 }
-.woocommerce.single-product #content #inner-content main .summary .print-products-area form ul.product-attributes-list li select {
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .summary .print-products-area form ul.product-attributes-list li select {
   background: #efefef;
   border: inherit;
   height: auto;
   font-weight: 300;
 }
-.woocommerce.single-product #content #inner-content main .summary .print-products-area form ul.product-attributes-list li:before {
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .summary .print-products-area form ul.product-attributes-list li:before {
   display: none;
 }
-.woocommerce.single-product #content #inner-content main .summary .print-products-area form .product-price {
+.woocommerce.single-product #content #inner-content main section.entry-content .single-product .summary .print-products-area form .product-price {
   font-weight: bold;
 }
 
@@ -3906,6 +3909,7 @@ footer.site-footer .inner-footer .inner-footer-wrap .footer-column.footer-column
   background: #cccccc;
   padding: 2em 0;
   position: relative;
+  margin-top: 2em;
 }
 .home #content main .home-section.home-about-subscribe:before {
   content: "";
@@ -4185,6 +4189,26 @@ footer.site-footer .inner-footer .inner-footer-wrap .footer-column.footer-column
   content: "\f30b";
   margin-left: 0.5em;
   font-family: "Font Awesome 5 Free";
+}
+.woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation {
+  float: left;
+  width: 100%;
+  margin-top: 0.5em;
+}
+.woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dt, .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dd {
+  float: left;
+  line-height: 1;
+  clear: none;
+  display: block;
+}
+.woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dt p, .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dd p {
+  line-height: 1;
+}
+.woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dt p em, .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dd p em {
+  font-style: normal;
+}
+.woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dt p em a, .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dd p em a {
+  font-size: 1em;
 }
 .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-quantity {
   width: 50%;
@@ -5762,6 +5786,9 @@ footer.site-footer .inner-footer .inner-footer-wrap .footer-column.footer-column
   .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name .print-products-area .modify-attr .button {
     font-size: 1em;
   }
+  .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dt p em a, .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-name dl.variation dd p em a {
+    font-size: 1em;
+  }
   .woocommerce-page.woocommerce-cart #content section.entry-content .woocommerce .shop_table_responsive tbody tr.cart_item td.product-quantity {
     width: 50%;
     border-top: 1px solid #ddd;
@@ -6692,6 +6719,7 @@ footer.site-footer .inner-footer .inner-footer-wrap .footer-column.footer-column
     margin-right: 2.3576515979%;
     width: 48.821174201%;
     padding: 0 3em;
+    text-align: left;
   }
   .home header.site-header .masthead-wrapper .masthead-title:last-child {
     margin-right: 0;
@@ -6827,6 +6855,7 @@ footer.site-footer .inner-footer .inner-footer-wrap .footer-column.footer-column
     background: #cccccc;
     padding: 5em 0;
     position: relative;
+    margin-top: 3em;
   }
   .home #content main .home-section.home-about-subscribe:before {
     content: "";

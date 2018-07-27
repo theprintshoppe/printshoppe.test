@@ -11,6 +11,8 @@ sidebars, comments, etc.
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/ps.php' );
 
+require_once( 'library/woocommerce.php' );
+
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 require_once( 'library/admin.php' );
 
