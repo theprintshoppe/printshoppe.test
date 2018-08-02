@@ -2,7 +2,7 @@ body {
   color: $base-font-color;
   font-family: $base-font-family;
   font-size: $base-font-size;
-  line-height: $base-line-height;
+  line-height: 2em;
   font-weight: 300;
 }
 
@@ -99,7 +99,7 @@ h5 {
   text-transform: uppercase;
   line-height: 1.5em;
   margin-bottom: .4em;
-  letter-spacing: .1em;
+  //letter-spacing: .1em;
 }
 
 h6 {
@@ -116,7 +116,7 @@ h6 {
 p {
   margin: 0 0 $small-spacing;
   color: $base-font-color;
-  line-height: $base-line-height;
+  line-height: 2em;
 
   em {
     //font-family: $serif;

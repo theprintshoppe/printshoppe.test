@@ -45,7 +45,8 @@ input[type="submit"],
 
 .button-alt,
 a.button-alt,
-.woocommerce .button-alt {
+.woocommerce .button-alt,
+.woocommerce a.button-alt {
   background-color: $base;
   color: $primary;
 
@@ -57,7 +58,9 @@ a.button-alt,
 }
 
 .button-ghost,
-a.button-ghost {
+a.button-ghost,
+.woocommerce .button-ghost,
+.woocommerce a.button-ghost {
   background-color: transparent;
   border: 2px solid $secondary;
   color: $secondary;
@@ -71,7 +74,9 @@ a.button-ghost {
 }
 
 .button-cta,
-a.button-cta {
+a.button-cta,
+.woocommerce .button-cta,
+.woocommerce a.button-cta {
 
   &:after {
     font-family: $icon;
@@ -127,7 +132,9 @@ a.button-cta {
 }
 
 .button-small,
-a.button-small {
+a.button-small,
+.woocommerce .button-small,
+.woocommerce a.button-small {
   font-size: 0.75em;
   padding: 0.75em 1em;
   border-radius: 1.5em;

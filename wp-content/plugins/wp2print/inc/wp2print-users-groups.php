@@ -646,6 +646,7 @@ function print_products_users_groups_new_order($order_id) {
 		}
 		if ($current_user_group->orders_approving) {
 			update_post_meta($order_id, '_approval_status', 'awaiting');
+			update_post_meta($order_id, '_approval_type', '0');
 
 			// send email to superuser
 			$orders_email_contents = unserialize($current_user_group->orders_email_contents);

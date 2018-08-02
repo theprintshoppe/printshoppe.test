@@ -25,12 +25,12 @@
 
 								<section class="entry-content">
 
-									<p><?php the_date(); ?>
+									<p><?php the_date(); ?></p>
 
 								</section>
 
 								<footer class="article-footer">
-									<p><a href="<?php the_permalink(); ?>" class="link-cta">Read More</a>
+									<p><a href="<?php the_permalink(); ?>" class="link-cta">Read More</a></p>
 								</footer>
 
 							</article>

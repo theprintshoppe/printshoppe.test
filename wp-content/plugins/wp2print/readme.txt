@@ -4,7 +4,7 @@ Donate link: http://wp2print.printscience.com
 Tags: product,customize,personalize,customization,personalization,design,online
 Requires at least: 4.5
 Tested up to: 4.9
-Stable tag: 3.1.26
+Stable tag: 3.1.27
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 WC tested up to: 3.4.0

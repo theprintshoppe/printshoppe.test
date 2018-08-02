@@ -116,11 +116,12 @@ function ps_gallery_style($css) {
 
 // remove query strings from static resources
 function _remove_script_version( $src ){ 
-	$parts = explode( '?', $src ); 	
-	return $parts[0]; 
+	 if( strpos( $src, '?ver=' ) )
+        $src = remove_query_arg( 'ver', $src );
+    return $src; 
 } 
-add_filter( 'script_loader_src', '_remove_script_version', 15, 1 ); 
-add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
+//add_filter( 'script_loader_src', '_remove_script_version', 15, 1 ); 
+//add_filter( 'style_loader_src', '_remove_script_version', 15, 1 );
 
 
 /*********************
@@ -168,8 +169,8 @@ function ps_scripts_and_styles() {
 		wp_register_script( 'ps-gmaps', get_stylesheet_directory_uri() . '/library/js/gmaps.min.js', array( 'jquery' ), '', true );
 
 		//adding selectFx file in the footer
-		wp_register_script( 'ps-classie-js', get_stylesheet_directory_uri() . '/library/js/classie.min.js', array( 'jquery' ), '', true );
-		wp_register_script( 'ps-select-fx-js', get_stylesheet_directory_uri() . '/library/js/selectFx.min.js', array( 'jquery' ), '', true );
+		//wp_register_script( 'ps-classie-js', get_stylesheet_directory_uri() . '/library/js/classie.min.js', array( 'jquery' ), '', true );
+		//wp_register_script( 'ps-select-fx-js', get_stylesheet_directory_uri() . '/library/js/selectFx.min.js', array( 'jquery' ), '', true );
 
 		//adding slick script & style
 		wp_register_script( 'ps-slick-js', get_stylesheet_directory_uri() . '/library/slick/slick.min.js', array( 'jquery' ), '', true );
@@ -181,6 +182,9 @@ function ps_scripts_and_styles() {
 		wp_register_script( 'ps-featherlight-gallery-js', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.gallery.min.js', array( 'jquery' ), '', true );
 		wp_register_style( 'ps-featherlight-css', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.min.css', array(), '', 'all' );
 		wp_register_style( 'ps-featherlight-gallery-css', get_stylesheet_directory_uri() . '/library/featherlight/featherlight.gallery.min.css', array(), '', 'all' );
+
+		// countup script
+		wp_register_script( 'ps-countup-js', get_stylesheet_directory_uri() . '/library/js/countUp.min.js', array( 'jquery' ), '', true );
 		
 		// enqueue styles and scripts
 		wp_enqueue_script( 'ps-modernizr' );
@@ -206,8 +210,12 @@ function ps_scripts_and_styles() {
 		wp_enqueue_script( 'ps-slick-js' );
 		wp_enqueue_script( 'ps-featherlight-js' );
 		wp_enqueue_script( 'ps-featherlight-gallery-js' );
-		wp_enqueue_script( 'ps-classie-js' );
-		wp_enqueue_script( 'ps-select-fx-js' );
+		//wp_enqueue_script( 'ps-classie-js' );
+		//wp_enqueue_script( 'ps-select-fx-js' );
+
+		if(get_the_ID() === 4115) {
+			wp_enqueue_script( 'ps-countup-js' );
+		}
 	}
 }
 

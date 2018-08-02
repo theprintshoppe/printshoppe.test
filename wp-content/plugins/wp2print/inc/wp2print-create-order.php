@@ -357,7 +357,7 @@ function print_products_create_order_get_order_item_attributes($item_id) {
 	}
 }
 
-function print_products_create_order_set_item_meta($order_id, $item_type, $value, $stax) {
+function print_products_create_order_set_item_meta($order_id, $item_type, $value, $stax = 0) {
 	global $wpdb;
 
 	if ($item_type == 'shipping') {

@@ -193,6 +193,7 @@ jQuery(document).ready(function($) {
 
   // 1. Make a copy of the navigation at the end of the document
   $('nav.main-nav').clone().removeClass('main-nav').addClass('mobile-nav').appendTo('body').children('ul.main-nav').removeClass('main-nav').addClass('mobile-nav');
+  $('.top-nav .masthead-links').clone().appendTo('nav.mobile-nav');
 
   // 2. Open the mobile nav when needed
   $('.mobile-nav-trigger').on('click', function() {
@@ -204,6 +205,7 @@ jQuery(document).ready(function($) {
     $('nav.mobile-nav').toggleClass('open');
   });
 
+  // 2. Open the submenus when needed
   $('ul.mobile-nav > li.menu-item-has-children').on('click', function(e) {
     e.preventDefault();
     if($(this).children('.sub-menu').children('.mobile-nav-back').length === 0) {
@@ -212,7 +214,7 @@ jQuery(document).ready(function($) {
     $(this).toggleClass('open');
   });
 
-   $('.mobile-nav-back').on('click', function(e) {
+  $('.mobile-nav-back').on('click', function(e) {
     e.preventDefault();
    // $(this).parent().toggleClass('open');
     $(this).remove();
@@ -221,6 +223,10 @@ jQuery(document).ready(function($) {
    $('ul.mobile-nav > li.menu-item-has-children .sub-menu li.menu-item').on('click', function(e) {
     e.preventDefault();
    });
+
+   $('ul.mobile-nav .sub-menu .menu-item > a').click(function() {
+      window.location = $(this).attr('href');
+  });
 
   /*
    * Home Page Tabs

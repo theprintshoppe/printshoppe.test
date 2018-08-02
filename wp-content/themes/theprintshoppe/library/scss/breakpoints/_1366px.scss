@@ -28,9 +28,6 @@ header.site-header {
 	}
 
 	.inner-header {
-		@include outer-container(1440px);
-		position: relative;
-		z-index: 3;
 
 		.row {
 			@include row();
@@ -434,19 +431,6 @@ footer.site-footer {
 			}
 		}
 	}
-	
-	#content {
-
-		main {
-
-			section.entry-content {
-				background: #fff;
-				padding: 3em;
-				border-radius: 0.5em 0.5em 0 0;
-				box-shadow: 0 3px 6px 0px rgba(#666, 0.5);
-			}
-		}
-	}
 }
 
 .single {
@@ -492,11 +476,9 @@ footer.site-footer {
 		padding-bottom: 5em;
 
 		.entry-header {
-			@include outer-container(1440px);
-			padding-bottom: 3em;
+			//padding-bottom: 3em;
 
 			.entry-image {
-				@include span-columns(6);
 
 				.product-featured-image {
 
@@ -579,8 +561,8 @@ footer.site-footer {
 					display: inline-block;
 
 					.product-key-row {
-						width: 100%;
-						max-width: calc((1120px / 4) - 0.5em);
+						//width: 100%;
+						width: calc((1024px / 3) - 0.5em);
 						position: relative;
 						padding: 2em 1.5em 2em 5em;
 						display: inline-block;
@@ -607,24 +589,6 @@ footer.site-footer {
 					}
 				}
 			}
-
-			main {
-				
-				@include span-columns(12);
-				float: none;
-				@include outer-container(1440px);
-				margin-top: 3em;
-			}
-
-			&.bb-enabled {
-
-				main {
-					@include outer-container(100%);
-					margin-top: 0;
-				}
-			} 
-
-			
 		}
 	}
 
@@ -643,118 +607,6 @@ footer.site-footer {
 }
 
 // Archive Styles
-
-.blog {
-
-	#content {
-
-		#inner-content {
-			@include outer-container(1440px);
-
-			main {
-				@include span-columns(8);
-
-				article {
-					box-shadow: none;
-					transition: all 1s;
-					margin-bottom: 2em;
-					position: relative;
-					background: #fff;
-
-					> a {
-						display: block;
-						height: 100%;
-						width: 100%;
-						padding: 2em 50% 2em 2em;
-						color: #333;
-
-						.post-thumbnail {
-							position: absolute;
-							background: url('../images/purple-background.svg') repeat;
-							right: 0;
-							top: 0;
-							height: 100%;
-							width: 50%;
-							z-index: 1;
-
-							&:before {
-								content: "";
-								position: absolute;
-								top: 0;
-								left: 0;
-								width: 40%;
-								height: 100%;
-								background: linear-gradient(to right, rgba(#fff, 1), rgba(#fff, 0));
-								z-index: 2;
-							}
-						}
-
-						.article-content {
-							position: relative;
-							z-index: 2;
-
-							h4 {
-								color: $primary;
-								font-family: $special;
-								text-transform: uppercase;
-								font-weight: bold;
-								font-style: normal;
-								margin: 0;
-							}
-
-							small {
-								margin-bottom: 1.5em;
-								padding-bottom: 0.5em;
-								border-bottom: 1px solid $primary-tint;
-								display: inline-block;
-							}
-
-							.postmetadata {
-								font-weight: bold;
-								font-size: 0.75em;
-								margin: 0;
-							}
-						}
-
-						.arrow {
-							opacity: 0;
-							position: absolute;
-							right: 0.5em;
-							top: 50%;
-							transform: translateY(-50%);
-							color: $secondary;
-							font-size: 3em;
-							transition: all 1s;
-							z-index: 2;
-						}
-					}
-
-					&:hover {
-						box-shadow: 0px 2px 4px 0px rgba(#666, 0.5);
-						cursor: pointer;
-
-						> a {
-
-							.arrow {
-								opacity: 1;
-							}
-						}
-					}
-				}
-
-				.load-more-button {
-					text-align: center;
-				}
-			}
-
-			.sidebar {
-				@include span-columns(4);
-				margin-top: 3em;
-
-			}
-		}
-	}
-}
 
 
 // Page Specific Styles
@@ -791,7 +643,7 @@ footer.site-footer {
 				img {
 					margin-top: -10em;
 					display: block;
-					transform: rotate(-30deg) translate(-5%, 15%) scale(1.15);
+					transform: rotate(-30deg) translate(-15%, 25%) scale(1.5);
 					opacity: 0.6;
 					width:90%;
 				}
@@ -889,20 +741,6 @@ footer.site-footer {
 					background: #cccccc;
 					padding: 5em 0;
 					position: relative;
-
-					&:before {
-						content: "";
-						position: absolute;
-						background: url('../images/idea-guide-mockup.jpg') no-repeat center center;
-						background-size: cover;
-						background-attachment: fixed;
-						filter: grayscale(1) blur(3px) opacity(15%);
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						z-index: 1;
-					}
 
 					.home-about-subscribe-wrap {
 						position: relative;
@@ -1089,6 +927,29 @@ footer.site-footer {
 
 	footer.site-footer {
 		margin-top: 0;
+	}
+}
+
+.page-mail {
+
+	#content {
+
+		#inner-content {
+
+			.row {
+
+				aside.direct-mail-callout {
+
+					.direct-mail-roi {
+						font-size: 1.75em;
+					}
+				}
+			}
+
+			main#main {
+				@include outer-container(100%);
+			}
+		}
 	}
 }
 

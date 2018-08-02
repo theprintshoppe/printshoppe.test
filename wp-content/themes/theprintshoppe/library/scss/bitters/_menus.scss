@@ -373,18 +373,19 @@ nav.mobile-nav {
 	top: 4.5em;
 	z-index: 99999999;
 	transition: all 0.25s ease-in;
-	padding-top: 1em;
 
 	ul.nav.mobile-nav {
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
+		//height: calc(100vh - 7.5em);
 
 		li.menu-item {
 			display: block;
 			padding: 1em 2em;
 			//position: relative;
 			vertical-align: middle;
+			text-align: center;
 
 			&:before {
 				display: none;
@@ -607,6 +608,25 @@ nav.mobile-nav {
 			}
 		}
 	}
+
+	.masthead-links {
+		text-align: center;
+		line-height: 2em;
+
+		a {
+			display: inline-block;
+			color: rgba(#fff, 0.8);
+			width: 100%;
+			font-size: 0.875em;
+
+			&.masthead-link-woo {
+				font-size: 1.25em;
+				line-height: 2.5em;
+				width: auto;
+				padding: 0 1em;
+			}
+		}
+	}
 }
 
 nav.mobile-nav.open {
@@ -618,7 +638,6 @@ nav.mobile-nav.open {
 
 nav.mobile-nav {
 	top: calc(5.5em - 5px);
-
 }
 
 }

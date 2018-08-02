@@ -22,7 +22,7 @@
 							<div class="home-section home-hero-tabs">
 								<div class="links">
 									<div class="link link-heading">
-										<h5>We provide 3 avenues to grow your business by accelerating customers through your funnel and coverting them to raving fans:</h5>
+										<h5>We provide 3 avenues to grow your business by accelerating customers through your funnel and converting them to raving fans:</h5>
 									</div>
 									<div class="link link-printssentials " data-target="printssentials">
 										<div class="menu-item-has-icon-subtitle">
@@ -48,7 +48,7 @@
 										</div>
 										<i class="fas fa-chevron-right"></i>
 									</div>
-									<div class="link link-logistics-plus" data-target="logistics-plus">
+									<!--<div class="link link-logistics-plus" data-target="logistics-plus">
 										<div class="menu-item-has-icon-subtitle">
 											<div class="menu-item-icon">
 												<i class="fa fa-truck"></i>
@@ -59,7 +59,7 @@
 											</div>
 										</div>
 										<i class="fas fa-chevron-right"></i>
-									</div>
+									</div>-->
 								</div>
 								<div class="slides">
 									<div class="slide slide-printssentials " data-content="printssentials">
@@ -76,7 +76,7 @@
 												<li>Branded Products + Swag</li>
 												<li>We <i class="fa fa-heart"></i> Custom Projects!</li>
 											</ul> 
-											<p class="cta-link"><a href="<?php bloginfo('url'); ?>/printssentials" class="link-cta">Get More Value from Your Print</a></p>
+											<p class="cta-link"><a href="<?php bloginfo('url'); ?>/printssentials/" class="link-cta">Get More Value from Your Print</a></p>
 										</div>
 									</div>
 									<div class="slide slide-epic-mail active" data-content="epic-mail">
@@ -91,10 +91,10 @@
 												<li>Complex, Multi-Piece Mailers</li>
 												<li>Online Marketing Integration</li>
 											</ul> 
-											<p class="cta-link"><a href="<?php bloginfo('url'); ?>/epic-mail" class="link-cta">Download Your Direct Mail Cheat Sheet</a></p>
+											<p class="cta-link"><a href="<?php bloginfo('url'); ?>/mail/" class="link-cta">Learn How to Grow Profits with Direct Mail</a></p>
 										</div>
 									</div>
-									<div class="slide slide-logistics-plus" data-content="logistics-plus">
+									<!--<div class="slide slide-logistics-plus" data-content="logistics-plus">
 										<div class="slide-content">
 											<h2 class="slide-title">Logistics+</h2>
 											<p><strong>Worries about shipping &amp; fulfillment are a thing of the past.</strong></p>
@@ -107,7 +107,7 @@
 											</ul>
 											<p class="cta-link"><a href="<?php bloginfo('url'); ?>/logistics-plus" class="link-cta">Simplify Your Operations with Logistics+</a></p>
 										</div>
-									</div>
+									</div>-->
 								</div>
 							</div>
 
@@ -141,24 +141,30 @@
 								<div class="home-about-subscribe-wrap">
 									<div class="home-about">
 										<h2>Who Is the Print Shoppe</h2>
-										<p><strong>We fuel massive growth for your brand using the most proven marketing channel: print.</strong></p>
-										<p>Since 1987, we've helped businesses and nonprofits from Austina and beyond reach their propects &amp; customers.</p>
+										<p><strong>We fuel massive growth for your brand using the most proven marketing channel: print &amp; direct mail.</strong></p>
+										<p>Since 1987, we've helped businesses and nonprofits from Austin and beyond reach their propects &amp; customers.</p>
 										<p>We are a place where tradition meets technology, art meets science, and where challenging projects define us.</p>
-										<p><a href="<?php bloginfo('url'); ?>/company" class="button button-small button-cta">Learn More About Us</a></p>
+										<p><a href="<?php bloginfo('url'); ?>/company/" class="button button-small button-cta">Learn More About Us</a></p>
 									</div>
 									<div class="home-subscribe">
 										<h2>Join Thousands of Smart Marketers</h2>
 										<p>Sign up for our bi-weekly BrandHack email to gain powerful marketing knowledge to grow your small business brand.</p>
 										<div class="optin-form">
 											<form>
-												<input type="text" placeholder="First Name" class="fname"/><input type="text" placeholder="Last Name" class="lname"/>
-												<input type="email" placeholder="Your Email Address" />
-												<div class="submit-button">
-													<input type="submit" value="Join BrandHack" class="button button-cta"/>
-												</div>
-												<div class="disclaimer">
-													<p>Don't worry &mdash; we hate spam too, unless it's fried. Learn about how we guard your privacy <a href="<?php bloginfo('url'); ?>/privacy">here</a>.</p>
-												</div>
+												<p class="optin-form-row">
+													<input type="text" placeholder="First Name" class="fname"/><input type="text" placeholder="Last Name" class="lname"/>
+												</p>
+												<p class="optin-form-row">
+													<input type="email" placeholder="Your Email Address" />
+												</p>
+												<p class="optin-form-row">
+													<div class="submit-button">
+														<input type="submit" value="Join BrandHack" class="button button-cta"/>
+													</div>
+													<div class="disclaimer">
+														<p>Don't worry &mdash; we hate spam too, unless it's fried. Learn about how we guard your privacy <a href="<?php bloginfo('url'); ?>/privacy">here</a>.</p>
+													</div>
+												</p>
 										</div>
 									</div>
 								</div>
@@ -235,7 +241,7 @@
 												<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
 											 <?php endif; ?>
 
-											 <p class="home-all-archive-link"><a href="<?php bloginfo('url'); ?>/company/newsroom" class="link-cta">Visit Our Newsroom</a></p>
+											 <p class="home-all-archive-link"><a href="<?php bloginfo('url'); ?>/company/newsroom/" class="link-cta">Visit Our Newsroom</a></p>
 										</div>
 										<div class="home-events">
 											<h2>Upcoming Events</h2>

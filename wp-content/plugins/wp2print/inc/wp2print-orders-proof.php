@@ -17,6 +17,7 @@ function print_products_orders_proof_actions() {
 					$user_email = $order->billing_email;
 
 					update_post_meta($order_id, '_approval_status', 'awaiting');
+					update_post_meta($order_id, '_approval_type', '1');
 					update_post_meta($order_id, '_proof_files', $proof_files);
 
 					// send email to order user
@@ -175,7 +176,7 @@ function print_products_orders_proof_get_awaiting_orders($is_superuser, $group_u
 			$awaiting_orders = $wpdb->get_results(sprintf("SELECT p.*, pm.meta_value as user_id FROM %sposts p LEFT JOIN %spostmeta pm ON pm.post_id = p.ID LEFT JOIN %spostmeta pm2 ON pm2.post_id = p.ID WHERE p.post_type = 'shop_order' AND p.post_status != 'trash' AND pm.meta_key = '_customer_user' AND pm.meta_value IN ('%s') AND pm2.meta_key = '_approval_status' AND pm2.meta_value = 'awaiting' ORDER BY p.ID DESC", $wpdb->prefix, $wpdb->prefix, $wpdb->prefix, implode("','", $group_users)));
 		}
 	} else {
-		$awaiting_orders = $wpdb->get_results(sprintf("SELECT p.*, pm.meta_value as user_id FROM %sposts p LEFT JOIN %spostmeta pm ON pm.post_id = p.ID LEFT JOIN %spostmeta pm2 ON pm2.post_id = p.ID WHERE p.post_type = 'shop_order' AND p.post_status != 'trash' AND pm.meta_key = '_customer_user' AND pm.meta_value = '%s' AND pm2.meta_key = '_approval_status' AND pm2.meta_value = 'awaiting' ORDER BY p.ID DESC", $wpdb->prefix, $wpdb->prefix, $wpdb->prefix, $current_user->ID));
+		$awaiting_orders = $wpdb->get_results(sprintf("SELECT p.*, pm.meta_value as user_id FROM %sposts p LEFT JOIN %spostmeta pm ON pm.post_id = p.ID LEFT JOIN %spostmeta pm2 ON pm2.post_id = p.ID LEFT JOIN %spostmeta pm3 ON pm3.post_id = p.ID WHERE p.post_type = 'shop_order' AND p.post_status != 'trash' AND pm.meta_key = '_customer_user' AND pm.meta_value = '%s' AND pm2.meta_key = '_approval_status' AND pm2.meta_value = 'awaiting' AND pm3.meta_key = '_approval_type' AND pm3.meta_value = '1' ORDER BY p.ID DESC", $wpdb->prefix, $wpdb->prefix, $wpdb->prefix, $wpdb->prefix, $current_user->ID));
 	}
 	return $awaiting_orders;
 }

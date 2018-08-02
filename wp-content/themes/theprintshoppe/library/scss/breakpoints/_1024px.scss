@@ -28,9 +28,6 @@ header.site-header {
 	}
 
 	.inner-header {
-		@include outer-container(1440px);
-		position: relative;
-		z-index: 3;
 
 		.row {
 			@include row();
@@ -464,19 +461,10 @@ footer.site-footer {
 
 				.entry-content {
 
-					.byline {
-						padding-bottom: 1em;
-						border-bottom: 2px dotted $primary;
-						margin-bottom: 1em;
-					}
-
 					img.size-full.alignleft {
-						margin: 1em 0 2em;
-					    margin-left: -6em;
+						margin: 1em 0 2em -6em;
 					    max-width: calc(100% + 10em);
 					    width: calc(100% + 10em);
-					    height: auto;
-					    box-shadow: 0 3px 6px 0px rgba(#666, 0.5);
 					}
 				}
 			}
@@ -490,26 +478,61 @@ footer.site-footer {
 }
 
 .woocommerce.single-product {
+
+	header.site-header {
+		padding: 0 0 5em;
+
+		header.entry-header {
+			@include outer-container(1120px);
+			
+			h1.page-title,
+			div.subhead {
+				@inlcude span-columns(5);
+				@include shift(7);
+				@include omega();
+				text-align: left;
+				padding-left: 0;
+
+				&:after {
+					left: 0;
+					transform: none;
+				}
+			} 
+		}
+	}
 	
 	#content {
 
 		#inner-content {
 
-			main {
-
-				.single-product
+			main#main {
+				@include span-columns(12);
 				
-					.woocommerce-product-gallery {
-						@include span-columns(6);
-					}
 
-					.summary {
-						@include span-columns(6);
-						@include omega();
+				section.entry-content {
+					background: none;
+					padding: 0;
+					box-shadow: none;
 
-						.product-attributes {
+					.single-product {
+						@include outer-container(1120px);
 
-							form {
+						.single-product-image-summary-wrapper {
+							@include span-columns(7);
+							margin-top: -12em;
+							padding: 3em 1em 3em 0;
+						}
+
+
+						form.add-cart-form {
+							@include span-columns(5);
+							@include omega();
+							background: #fff;
+							padding: 3em;
+							box-shadow: 0px 3px 3px 0px rgba(#333, 0.5);
+							border-radius: 0.5em 0.5em 0 0;
+
+							
 
 								ul.product-attributes-list {
 
@@ -536,10 +559,15 @@ footer.site-footer {
 
 								.product-price {
 									font-weight: bold;
+
+									span.pprice {
+										color: green;
+									}
 								}
 							}
-						}
+						
 					}
+				}
 			}
 		}
 	}
@@ -551,8 +579,8 @@ footer.site-footer {
 		padding-bottom: 5em;
 
 		.entry-header {
-			@include outer-container(1440px);
-			padding-bottom: 3em;
+			@include outer-container(1120px);
+			//padding-bottom: 3em;
 			text-align: left;
 
 			.entry-image {
@@ -674,39 +702,28 @@ footer.site-footer {
 				}
 			}
 
-			aside.print-process {
-				@include span-columns(6);
-				padding: 3em;
-				margin-top: 0;
-			}
+			.content-wrapper {
 
-			main#main {
-				@include span-columns(5);
-				@include omega();
-				margin-top: 0;
-				
-				#products {
-					@include outer-container(100%);			
-				}			
-			}
-
-			main {
-				
-				@include span-columns(12);
-				float: none;
-				@include outer-container(1440px);
-				margin-top: 3em;
-			}
-
-			&.bb-enabled {
-
-				main {
-					@include outer-container(100%);
+				aside.print-process {
+					@include span-columns(6);
+					@include omega();
+					padding: 3em;
 					margin-top: 0;
 				}
-			} 
 
-			
+				main#main {
+					@include span-columns(6);
+					@include omega();
+					margin-top: 0;
+					// @include shift(1);
+					padding: 3em;
+					border-left: 1px solid rgba($primary-pastel, 0.5);
+					
+					.ps-product-templates-section {
+						margin-top: 3em;
+					}		
+				}
+			}
 		}
 	}
 
@@ -748,21 +765,24 @@ footer.site-footer {
 	#content {
 
 		#inner-content {
+			@include direction-context(right-to-left) {
 
-			aside.print-process {
-				@include span-columns(6);
-				padding: 3em;
-				margin-top: -5em;
-			}
+				aside.print-process {
+					@include span-columns(6);
+					padding: 3em;
+					@include omega();
+					margin-top: -5em;
+				}
 
-			main#main {
-				@include span-columns(5);
-				@include omega();
-				margin-top: 0;
-				
-				#products {
-					@include outer-container(100%);			
-				}			
+				main#main {
+					@include span-columns(5);
+					
+					margin-top: 0;
+					
+					#products {
+						@include outer-container(100%);			
+					}			
+				}
 			}
 		}
 	}
@@ -880,6 +900,41 @@ footer.site-footer {
 	}
 }
 
+.tax-wcpv_product_vendors {
+
+	#content {
+
+		#inner-content {
+
+			main#main {
+
+				article.product {
+					@include span-columns(6);
+					padding-bottom: 10%;
+
+					a {
+
+						section.entry-content {
+							
+							h3 {
+								font-size: 1.75em;
+							}
+						}
+
+						.icon {
+							
+							font-size: 4em;
+						}
+					}
+
+					&:nth-child(2n) {
+						@include omega();
+					}
+				}
+			}
+		}
+	}
+}
 
 // Page Specific Styles
 .home {
@@ -903,6 +958,12 @@ footer.site-footer {
 					color: #fff;
 					font-size: 2.5em;
 					margin-top: 0;
+					position: relative;
+
+					&:after {
+						left: 0;
+						transform: translateX(0);
+					}
 				}
 
 				.masthead-subhead {
@@ -1021,20 +1082,6 @@ footer.site-footer {
 					padding: 5em 0;
 					position: relative;
 					margin-top: 3em;
-
-					&:before {
-						content: "";
-						position: absolute;
-						background: url('../images/idea-guide-mockup.jpg') no-repeat center center;
-						background-size: cover;
-						background-attachment: fixed;
-						filter: grayscale(1) blur(3px) opacity(15%);
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						z-index: 1;
-					}
 
 					.home-about-subscribe-wrap {
 						position: relative;
@@ -1224,6 +1271,76 @@ footer.site-footer {
 	}
 }
 
+.page-mail {
+
+	#content {
+
+		#inner-content {
+
+			.row {
+
+				aside.direct-mail-callout {
+					background: #fff;
+					margin: -5em 0 0;
+					@include span-columns(6);
+					text-align: center;
+
+
+					.direct-mail-stat {
+						
+						padding: 2em;
+
+						h2 {
+							font-size: 3em;
+							margin-bottom: 0;
+							color: $primary-pastel;
+
+							span {
+								color: $secondary;
+							}
+						}
+
+						h3 {
+							font-size: 1.25em;
+						}
+					}
+
+					.direct-mail-roi {
+						font-size: 1.625em;
+					}
+				}
+
+				aside.direct-mail-headline {
+					@include span-columns(6);
+					@include omega();
+					padding: 3em;
+					margin-top: -2.5em;
+
+					.direct-mail-use-cases {
+
+						ul {
+
+							li {
+
+								h5 {
+
+									i {
+										display: none;
+									}
+								}
+
+								p {
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 .error404 {
 
 	#content {
@@ -1246,7 +1363,8 @@ footer.site-footer {
 	}
 }
 
-.page-proposal {
+.page-proposal,
+.page-upload {
 	header.site-header {
 
 		.inner-header {
@@ -1275,24 +1393,116 @@ footer.site-footer {
 
 .woocommerce-page {
 
+	#content {
+
+		#inner-content {
+
+			.shop_table {
+				font-size: 1em;
+
+				tbody {
+
+					tr {
+
+						td {
+							padding: 1em 3em;
+						}
+					}
+				}
+			}
+		}
+	}
+
 	&.woocommerce-cart {
 
 		#content {
 
-			section.entry-content {
+			#inner-content {
 
-				.woocommerce {
-					
-					.shop_table_responsive {
+				section.entry-content {
 
-						tbody {
+					.woocommerce {
+						
+						.shop_table_responsive {
 
-							tr.cart_item {
+							tbody {
 
-								td {
-									padding: 1em 3em;
+								tr.cart_item {
+
+									td {
+										padding: 1em 3em;
+									}
 								}
 							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.woocommerce-checkout {
+
+		#content {
+
+			#inner-content {
+
+				section.entry-content {
+
+					form.checkout {
+						@include outer-container(100%);
+
+						p {
+							font-size: 1em;
+						}
+
+						.col2-set {
+
+							> div {
+								@include span-columns(6);
+
+								&.col-2 {
+									@include omega();
+								}
+							}
+						}
+
+						#order_review {
+
+							.woocommerce-checkout-review-order-table {
+								font-size: 1em;
+							}
+
+							#payment {
+
+									.payment_methods {
+										@include span-columns(6);
+									}
+								}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	&.woocommerce-account {
+
+		#content {
+
+			#inner-content {
+
+				main#main {
+
+					section.entry-content {
+
+						.woocommerce-MyAccount-navigation {
+							@include span-columns(4);
+							margin-left: -3em;
+						}
+
+						.woocommerce-MyAccount-content {
+							@include span-columns(8);
 						}
 					}
 				}

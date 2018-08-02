@@ -88,9 +88,18 @@ ol {
 		    left: 0;
 		    width: calc(4em / 3);
 		    //height: calc(4em / 3);
-		    line-height: 1;
+		    line-height: calc(3em - 4px);
 		    color: $primary;
-		    transform: translateY(50%);
+		    //transform: translateY(0.75em);
+		}
+
+		&:after {
+			content: "";
+			width: 1.75em;
+		    position: absolute;
+		    border-bottom: 1px solid rgba($primary, 0.3);
+		    left: -2.5em;
+		    top: calc(0.875em + 2px);
 		}
 	}
 }

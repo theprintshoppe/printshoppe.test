@@ -15,8 +15,8 @@
 							<a href="<?php echo home_url(); ?>" rel="nofollow"><img itemprop="logo" class="main-logo-footer" src="<?php bloginfo('stylesheet_directory'); ?>/library/images/print-shoppe-austin-tx.svg" /></a>
 						</div>
 						<div class="footer-blurb">
-							<p>We fuel massive growth for your brand using the most proven marketing channel: print.</p>
-							<p><a href="<?php bloginfo('url'); ?>/company" class="link-cta">More About Us</i></a></p>
+							<p>We fuel massive growth for your brand using the most proven marketing channel: print &amp; direct mail.</p>
+							<p><a href="<?php bloginfo('url'); ?>/company/" class="link-cta">More About Us</i></a></p>
 						</div>
 						<div class="footer-important-info">
 							<a href="<?php bloginfo('url'); ?>/privacy/">Our Privacy Policy</a> <br />
@@ -68,7 +68,7 @@
 					</div>
 					<div class="omega footer-column footer-column-contact">
 						<h3>Contact Us</h3>
-						<p class="footer-contact-cta"><a href="<?php bloginfo('url'); ?>/proposal" class="button button-small">Request a Proposal</a> <a href="<?php bloginfo('url'); ?>/upload" class="button button-alt button-ghost button-small">Upload a File</a></p>
+						<p class="footer-contact-cta"><a href="<?php bloginfo('url'); ?>/proposal/" class="button button-small">Request a Proposal</a> <a href="<?php bloginfo('url'); ?>/upload/" class="button button-alt button-ghost button-small">Upload a File</a></p>
 						<p class="footer-contact-row email"><i class="fas fa-at"></i><a href="mailto:sales(at)printshoppe(dot)net">sales@printshoppe.net</a></p>
 						<p class="footer-contact-row phone"><i class="fas fa-phone"></i>512-328-9206</p>
 						<p class="footer-contact-row address"><i class="fas fa-map-marker-alt"></i>5321 Industrial Oaks Blvd,<br />Suite 128<br />Austin, TX 78735</p>
@@ -85,7 +85,7 @@
 
 		if(get_field('ps_product_story')) : ?>
 			<div id="fl-product-story" class="lightbox-container">
-				<h2 class="story-header"><?php the_title(); ?> / <span><?php echo get_field('ps_product_story_title'); ?></span></h2>
+				<h2 class="story-header"><?php the_title(); ?> <?php if(get_field('ps_product_story_title')) : ?> / <span><?php echo get_field('ps_product_story_title'); ?></span><?php endif; ?></h2>
 				<?php echo get_field('ps_product_story'); ?>
 		</div>
 		<?php endif; ?>
@@ -118,6 +118,34 @@
   					centerMode: true,
   					variableWidth: true
 				});
+
+				<?php if(get_the_ID() === 4115) : ?>
+
+					$('.timer').each(count);
+					function count(options) {
+				    	var $this = $(this);
+				    	options = $.extend({}, options || {}, $this.data('countToOptions') || {});
+				    	$this.countTo(options);
+				    }
+
+				    $('.direct-mail-use-cases ul li h5').on('click', function() {
+				    	$(this).parent().toggleClass('open');
+				    	$(this).siblings('p').slideToggle();
+				    });
+
+				<?php endif; ?>
+
+				<?php if(get_the_ID() === 6) : ?>
+
+				    $(".proof-approval").change(function() {
+					    if(this.checked) {
+					        $('.cart-collaterals').toggleClass('approved');
+					    } else {
+					    	$('.cart-collaterals').toggleClass('approved');
+					    }
+					});
+
+				<?php endif; ?>
 			});
 		</script>
 

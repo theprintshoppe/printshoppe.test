@@ -2,7 +2,7 @@
 /*
 Plugin Name: wp2print
 Description: wp2print brings full Web-to-Print functions to Wordpress/WooCommerce
-Version: 3.1.26
+Version: 3.1.27
 Author: Print Science
 Bitbucket Plugin URI: printsciencewp2print/wp2print
 WC tested up to: 3.4.0

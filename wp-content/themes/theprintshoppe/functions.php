@@ -258,14 +258,13 @@ external fonts. If you're using Google Fonts, you
 can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
-function ps_fonts() {
-  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Comfortaa:700|Merriweather:400,400i,700|Montserrat:500,500i,700,700i');
-}
-
-add_action('wp_enqueue_scripts', 'ps_fonts');
+function ps_custom_add_google_fonts() {
+ wp_enqueue_style( 'custom-google-fonts', 'https://fonts.googleapis.com/css?family=Comfortaa:700|Merriweather:400,400i,700|Montserrat:500,500i,700,700i', false );
+ }
+ add_action( 'wp_enqueue_scripts', 'ps_custom_add_google_fonts' );
 
 $woocommerce_disable_product_list_price = get_option('woocommerce_disable_product_list_price');
-add_filter('wc_get_template', 'ps_print_products_woo_get_template', 5, 2);
+//add_filter('wc_get_template', 'ps_print_products_woo_get_template', 5, 2);
 function ps_print_products_woo_get_template($located, $template_name) {
   global $product, $woocommerce_disable_product_list_price;
   $print_type = false;

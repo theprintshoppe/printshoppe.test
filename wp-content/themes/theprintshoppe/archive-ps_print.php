@@ -4,7 +4,7 @@
 					<h1 class="page-title">Printssentials</h1>
 					<div class="subhead">
 						<p><strong>Have confidence in your print marketing partner.</strong><br />We provide high quality, reliable design &amp; printing services for ambitious brands centered around smart growth.</p>
-						<p><strong>See our <a href="#process">process</a>, our <a href="#products">procucts</a>, or <a href="<?php bloginfo('url'); ?>/proposal">request a proposal</a>.</strong></p>
+						<p><strong>See our <a href="#process">process</a>, our <a href="#products">products</a>, or <a href="<?php bloginfo('url'); ?>/proposal">request a proposal</a>.</strong></p>
 					</div>
 				</header>
 
@@ -13,22 +13,19 @@
 			<div id="content">
 
 				<div id="inner-content">
-						<aside id="process" class="print-process">
-
-							<p>We view every project as an opportunity to showcase the value print can bring to your brand. <strong>Clients like you trust us to guide them to finding that value.</strong> Every project is treated with care and is put through our meticulous process:</p>
-
-							<?php ps_part_print_process(); ?>
-
-						</aside>
+						
 
 						<main id="main" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
 							<div id="products">
 
-								<?php $custom_terms = get_terms('ps_print_cat');
+								<?php 
+								
+								$custom_terms = get_terms('ps_print_cat');
 
 								foreach($custom_terms as $custom_term) {
 								    wp_reset_query();
-								    $args = array('post_type' => 'ps_print',
+								    $args = array(
+								    	'post_type' => 'ps_print',
 								        'tax_query' => array(
 								            array(
 								                'taxonomy' => 'ps_print_cat',
@@ -36,6 +33,7 @@
 								                'terms' => $custom_term->slug,
 								            ),
 								        ),
+								        'posts_per_page' => -1,
 								     );
 
 								     $loop = new WP_Query($args);
@@ -52,6 +50,14 @@
 							</div>
 
 						</main>
+
+						<aside id="process" class="print-process">
+
+							<p>We view every project as an opportunity to showcase the value print can bring to your brand. <strong>Clients like you trust us to guide them to finding that value.</strong> Every project is treated with care and is put through our meticulous process:</p>
+
+							<?php ps_part_print_process(); ?>
+
+						</aside>
 
 				</div>
 

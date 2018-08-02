@@ -45,8 +45,8 @@ function ps_news_pt() {
 			'query_var' => true,
 			'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */ 
 			'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-			'rewrite'	=> array( 'slug' => 'news', 'with_front' => false ), /* you can specify its url slug */
-			'has_archive' => 'true', /* you can rename the slug here */
+			'rewrite'	=> array( 'slug' => 'company/news', 'with_front' => false ), /* you can specify its url slug */
+			'has_archive' => 'company/newsroom', /* you can rename the slug here */
 			'capability_type' => 'page',
 			'hierarchical' => false,
 			/* the next one is important, it tells what's enabled in the post editor */

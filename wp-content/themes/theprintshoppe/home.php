@@ -1,10 +1,10 @@
 <?php get_header(); ?>
 
 				<header class="entry-header">
-					<h1 class="page-title" itemprop="headline">Insights</h1>
+					<h1 class="page-title" itemprop="headline">Insights from the Print Shoppe</h1>
 					<div class="cf"></div>
 					<div class="subhead">
-						<p>Intro to our blog</p>
+						<p>Become a better marketer by keeping up with knowledge from the Print Shoppe.</p>
 					</div>
 				</header>
 
